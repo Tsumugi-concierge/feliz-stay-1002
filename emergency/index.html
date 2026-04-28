@@ -4,39 +4,117 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Emergency — Feliz Stay 1002</title>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=Pacifico&display=swap" rel="stylesheet">
 <style>
-  :root{--accent:#2e7d45;--accent-light:#b2d9be;--cream:#f4faf5;}
-  *{box-sizing:border-box;margin:0;padding:0;}
-  body{font-family:'Nunito',sans-serif;background:var(--cream);color:#3a3232;min-height:100vh;display:flex;flex-direction:column;}
-  .top-bar{background:linear-gradient(135deg,var(--accent) 0%,color-mix(in srgb,var(--accent) 70%,black) 100%);padding:16px 20px;display:flex;align-items:center;gap:14px;position:sticky;top:0;z-index:10;box-shadow:0 2px 12px rgba(0,0,0,0.15);}
-  .back-btn{background:rgba(255,255,255,0.25);border:none;border-radius:50%;width:38px;height:38px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.2rem;color:#fff;text-decoration:none;flex-shrink:0;}
-  .back-btn:hover{background:rgba(255,255,255,0.4);}
-  .top-title{font-family:'Pacifico',cursive;font-size:1.3rem;color:#fff;flex:1;}
-  .top-emoji{font-size:1.8rem;}
-  .content{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 20px;text-align:center;}
-  .icon{font-size:4rem;margin-bottom:20px;}
-  .title{font-family:'Pacifico',cursive;font-size:1.4rem;color:var(--accent);margin-bottom:10px;}
-  .subtitle{font-size:1rem;color:#6b5a5a;margin-bottom:8px;}
-  .note{font-size:0.85rem;color:#9a8585;background:#fff;border-radius:12px;padding:14px 20px;margin-top:20px;box-shadow:0 2px 8px rgba(0,0,0,0.08);}
-  .back-footer{text-align:center;padding:24px 0 32px;}
-  .back-footer a{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;text-decoration:none;padding:12px 28px;border-radius:50px;font-weight:800;font-size:0.9rem;}
+  :root {
+    --accent: #c03840;
+    --accent-light: #f0c0c0;
+    --cream: #fdf6ee;
+    --text-dark: #3a3232;
+    --text-mid: #6b5a5a;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Nunito', sans-serif; background: var(--cream); color: var(--text-dark); min-height: 100vh; }
+  .top-bar {
+    background: linear-gradient(135deg, var(--accent) 0%, color-mix(in srgb, var(--accent) 70%, black) 100%);
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+  }
+  .back-btn {
+    background: rgba(255,255,255,0.25);
+    border: none;
+    border-radius: 50%;
+    width: 38px; height: 38px;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: #fff;
+    text-decoration: none;
+    flex-shrink: 0;
+    transition: background 0.2s;
+  }
+  .back-btn:hover { background: rgba(255,255,255,0.4); }
+  .top-title {
+    font-family: 'Pacifico', cursive;
+    font-size: 1.3rem;
+    color: #fff;
+    text-shadow: 1px 2px 4px rgba(0,0,0,0.2);
+    flex: 1;
+  }
+  .top-emoji { font-size: 1.8rem; }
+  .content { padding: 20px 16px 40px; max-width: 600px; margin: 0 auto; }
+  .content img:last-child { margin-bottom: 0; }
+  .back-footer {
+    text-align: center;
+    margin-top: 28px;
+    padding-bottom: 20px;
+  }
+  .back-footer a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 1rem;
+    text-decoration: none;
+    background: var(--accent-light);
+    padding: 12px 24px;
+    border-radius: 50px;
+    transition: opacity 0.2s;
+  }
+  .back-footer a:hover { opacity: 0.8; }
+
+  .lang-bar{display:flex;justify-content:center;gap:6px;padding:10px 16px;flex-wrap:wrap;background:var(--cream);}
+  .lang-btn{border:2px solid var(--accent-light);background:rgba(255,255,255,0.92);border-radius:50px;padding:4px 9px;font-family:'Nunito',sans-serif;font-size:0.72rem;font-weight:800;color:var(--text-mid);cursor:pointer;transition:all 0.2s;box-shadow:0 2px 8px rgba(120,80,60,0.12);}
+  .lang-btn.active{background:var(--accent);border-color:var(--accent);color:#fff;}
+  .lang-btn:hover:not(.active){border-color:var(--accent);color:var(--accent);}
+  .info-card{background:#fff;border-radius:14px;padding:16px 18px;margin:18px 0;box-shadow:0 2px 12px rgba(120,80,60,0.08);font-size:0.9rem;line-height:1.7;color:var(--text-mid);}
+  .info-card h3{font-size:0.95rem;font-weight:900;color:var(--accent);margin-bottom:8px;}
+  .info-card ul{padding-left:1.2em;}
+  .info-card li{margin-bottom:4px;}
+  .tel{font-size:1.1rem;font-weight:900;color:var(--text-dark);letter-spacing:0.03em;}
 </style>
+    <link rel="stylesheet" href="../assets/style-sub.css">
 </head>
 <body>
+<div class="lang-bar">
+  <button class="lang-btn active" onclick="setLang('en',this)">🇬🇧 EN</button>
+  <button class="lang-btn" onclick="setLang('ja',this)">🇯🇵 JA</button>
+  <button class="lang-btn" onclick="setLang('zh',this)">🇨🇳 ZH</button>
+  <button class="lang-btn" onclick="setLang('ko',this)">🇰🇷 KO</button>
+  <button class="lang-btn" onclick="setLang('fr',this)">🇫🇷 FR</button>
+  <button class="lang-btn" onclick="setLang('es',this)">🇪🇸 ES</button>
+</div>
 <div class="top-bar">
-  <a href="../" class="back-btn">&#x2190;</a>
-  <span class="top-emoji">🚨</span>
-  <div class="top-title">Emergency</div>
+  <a href="../" class="back-btn">←</a>
+  <span class="top-emoji">📞</span>
+  <div class="top-title" data-i18n="pageTitle">Emergency</div>
 </div>
 <div class="content">
-  <div class="icon">🚨</div>
-  <div class="title">Emergency</div>
-  <div class="subtitle">緊急時の連絡</div>
-  <div class="note">🚧 This page is being prepared.<br>準備中です。もうしばらくお待ちください。</div>
+
+<div class="info-card" style="border-left:4px solid var(--accent);margin-bottom:0;">
+  <h3>📍 Property Address / 物件住所</h3>
+  <p style="margin-top:6px;line-height:1.9;">2-65-1 Ikebukuro, Toshima-ku, Tokyo<br>Plaza Feliz Onda Building, Room 1002</p>
+  <p style="margin-top:4px;line-height:1.9;font-size:0.88rem;color:var(--text-mid);">〒171-0014<br>東京都豊島区池袋2-65-1<br>プラザフェリスオンダビル <strong>1002号室</strong></p>
 </div>
+<div class="info-card"><h3 data-i18n="emergTitle">Emergency Contacts</h3><ul><li><span data-i18n="emergPolice">Police</span>: <span class="tel">110</span></li><li><span data-i18n="emergFire">Fire / Ambulance</span>: <span class="tel">119</span></li><li data-i18n="emergEngPolice">Tokyo English-speaking Police (Weekdays 8:30-17:15)</li><li>☎ <span class="tel">03-3503-8484</span></li><li data-i18n="emergAmbulance">Ambulance Interpretation (EN/ES/ZH/KO/TH)</li><li>☎ <span class="tel">03-5285-8185</span></li><li data-i18n="emergHelpline">Japan Help Line — 24h English assistance</li><li>☎ <span class="tel">05-7000-0911</span></li></ul><p style="margin-top:12px;font-weight:700" data-i18n="emergAddress">Your address: Plaza Feliz Onda Bldg, 2-65-1 Ikebukuro, Toshima, Tokyo 171-0014</p></div>
 <div class="back-footer">
-  <a href="../">&#x2190; Back to Menu</a>
+  <a href="../" data-i18n="backToMenu">← Back to Menu</a>
 </div>
+</div>
+
+<script>
+const S={"en":{"pageTitle":"Emergency","emergTitle":"Emergency Contacts","emergPolice":"Police","emergFire":"Fire / Ambulance","emergEngPolice":"Tokyo English-speaking Police (Weekdays 8:30-17:15)","emergAmbulance":"Ambulance Interpretation (EN/ES/ZH/KO/TH) Weekdays 17:00-22:00 / Weekends 9:00-22:00","emergHelpline":"Japan Help Line — 24h English assistance","emergAddress":"Your address: Plaza Feliz Onda Bldg, 2-65-1 Ikebukuro, Toshima, Tokyo 171-0014","backToMenu":"← Back to Menu"},"ja":{"pageTitle":"緊急連絡先","emergTitle":"緊急連絡先","emergPolice":"警察","emergFire":"火災・救急","emergEngPolice":"外国語対応警察相談（平日 8:30-17:15）","emergAmbulance":"救急通訳サービス（英/西/中/韓/泰）平日17:00-22:00 / 土日祝9:00-22:00","emergHelpline":"Japan Help Line — 24時間英語対応","emergAddress":"住所: 〒171-0014 東京都豊島区池袋２丁目６５−１ プラザフェリスオンダビル","backToMenu":"← メニューへ戻る"},"zh":{"pageTitle":"紧急联系方式","emergTitle":"紧急联系方式","emergPolice":"警察","emergFire":"火警 / 救护车","emergEngPolice":"东京英语警察热线（工作日 8:30-17:15）","emergAmbulance":"急救翻译服务（英/西/中/韩/泰）工作日17:00-22:00 / 周末9:00-22:00","emergHelpline":"Japan Help Line — 24小时英语援助","emergAddress":"地址: 〒171-0014 东京都丰岛区池袋2-65-1 Plaza Feliz Onda大楼","backToMenu":"← 返回菜单"},"ko":{"pageTitle":"긴급 연락처","emergTitle":"긴급 연락처","emergPolice":"경찰","emergFire":"소방/구급","emergEngPolice":"도쿄 영어 경찰 상담 (평일 8:30-17:15)","emergAmbulance":"구급 통역 서비스 (영/스/중/한/태) 평일 17:00-22:00 / 주말 9:00-22:00","emergHelpline":"Japan Help Line — 24시간 영어 지원","emergAddress":"주소: 〒171-0014 도쿄 도시마구 이케부쿠로 2-65-1 Plaza Feliz Onda 빌딩","backToMenu":"← 메뉴로 돌아가기"},"fr":{"pageTitle":"Urgences","emergTitle":"Contacts d'urgence","emergPolice":"Police","emergFire":"Pompiers / Ambulance","emergEngPolice":"Police anglophone de Tokyo (Lun-Ven 8h30-17h15)","emergAmbulance":"Interpretation ambulance (EN/ES/ZH/KO/TH) Lun-Ven 17h-22h / Week-end 9h-22h","emergHelpline":"Japan Help Line — Assistance 24h en anglais","emergAddress":"Votre adresse: Plaza Feliz Onda Bldg, 2-65-1 Ikebukuro, Toshima, Tokyo 171-0014","backToMenu":"← Retour au menu"},"es":{"pageTitle":"Emergencias","emergTitle":"Contactos de emergencia","emergPolice":"Policia","emergFire":"Bomberos / Ambulancia","emergEngPolice":"Policia de Tokio en ingles (L-V 8:30-17:15)","emergAmbulance":"Interpretacion ambulancia (EN/ES/ZH/KO/TH) L-V 17:00-22:00 / Fin de sem 9:00-22:00","emergHelpline":"Japan Help Line — Asistencia 24h en ingles","emergAddress":"Su direccion: Plaza Feliz Onda Bldg, 2-65-1 Ikebukuro, Toshima, Tokyo 171-0014","backToMenu":"← Volver al menu"}};
+<script>
+function setLang(l,btn){document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');const t=S[l];if(!t)return;document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');if(k in t)el.textContent=t[k];});}
+setLang('en',document.querySelector('.lang-btn.active'));
+</script>
+</script>
 </body>
 </html>

@@ -100,6 +100,27 @@
   .jp { color: var(--text-dark); font-weight: 900; font-size: 0.9rem; line-height: 1.3; }
   .meaning { color: var(--text-mid); font-weight: 800; font-size: 0.9rem; line-height: 1.35; }
   .tip-card { background: rgba(255,255,255,0.9); border-left: 5px solid var(--accent); border-radius: 12px; padding: 13px 15px; color: var(--text-mid); font-size: 0.92rem; font-weight: 800; line-height: 1.6; margin-bottom: 18px; box-shadow: 0 2px 10px rgba(120,80,60,0.07); }
+  .ac-board { background: #fff; border-radius: 14px; overflow: hidden; margin-bottom: 18px; box-shadow: 0 4px 16px rgba(0,0,0,0.11); border: 1px solid rgba(0,0,0,0.06); }
+  .ac-board-title { padding: 14px 16px; color: var(--accent); font-size: 1.05rem; font-weight: 900; border-bottom: 1px solid rgba(0,0,0,0.06); }
+  .ac-language-row { display: grid; grid-template-columns: minmax(0, 1.85fr) minmax(150px, 0.9fr); gap: 14px; padding: 14px; border-bottom: 1px solid rgba(0,0,0,0.08); align-items: stretch; }
+  .ac-language-row:last-child { border-bottom: 0; }
+  .button-map { background: #f9f8f5; border-radius: 8px; padding: 12px; display: grid; grid-template-columns: 1fr 0.86fr 1fr; grid-template-rows: repeat(3, minmax(52px, auto)); gap: 12px 14px; align-items: center; box-shadow: inset 0 0 0 1px rgba(0,0,0,0.06); }
+  .remote-key { border: 2px solid rgba(0,0,0,0.75); border-radius: 13px; min-height: 52px; display: flex; align-items: center; justify-content: center; text-align: center; padding: 7px 9px; color: #111; font-weight: 900; font-size: clamp(1rem, 3.3vw, 1.55rem); line-height: 1.08; box-shadow: 0 4px 0 rgba(0,0,0,0.16), inset 0 10px 16px rgba(255,255,255,0.55); background: linear-gradient(#fff, #eee9dc); }
+  .remote-key.cool { background: linear-gradient(#dff8f6, #9fded8); }
+  .remote-key.heat { background: linear-gradient(#ffc084, #f28a3a); }
+  .remote-key.dry { background: linear-gradient(#fff49b, #ffd645); }
+  .remote-key.auto { background: linear-gradient(#eee4ff, #c7b3e8); }
+  .remote-key.temp { grid-row: span 2; min-height: 118px; flex-direction: column; gap: 6px; font-size: clamp(0.95rem, 3vw, 1.35rem); }
+  .remote-key.sleep { grid-column: 1 / 2; font-size: clamp(0.9rem, 2.6vw, 1.35rem); }
+  .remote-key.stop { grid-column: 2 / 4; font-size: clamp(0.95rem, 2.7vw, 1.35rem); }
+  .triangle { font-size: 1.1em; line-height: 1; }
+  .divider { width: 70%; height: 1px; background: rgba(0,0,0,0.22); }
+  .language-list { padding: 2px 0; }
+  .lang-tag { display: inline-block; color: #fff; border-radius: 6px; padding: 5px 14px; font-weight: 900; font-size: 1.08rem; margin-bottom: 11px; background: #1769aa; }
+  .lang-tag.zh { background: #06853e; }
+  .lang-tag.ko { background: #c92532; }
+  .language-list ul { list-style: none; display: grid; gap: 8px; }
+  .language-list li { font-size: 1.05rem; font-weight: 900; line-height: 1.2; color: #171717; }
   .back-footer { text-align: center; margin-top: 28px; padding-bottom: 20px; }
   .back-footer a { display: inline-flex; align-items: center; gap: 8px; background: var(--accent); color: #fff; text-decoration: none; padding: 12px 28px; border-radius: 50px; font-weight: 800; font-size: 0.9rem; box-shadow: 0 4px 12px rgba(0,0,0,0.2); transition: transform 0.2s; }
   .back-footer a:hover { transform: scale(1.04); }
@@ -108,6 +129,12 @@
     .device-card.wide .photo-frame { min-height: 430px; }
     .device-card.wide .photo-frame img { max-height: 430px; }
     .device-card.wide .photo-frame.square img { max-height: 360px; }
+  }
+  @media (max-width: 560px) {
+    .ac-language-row { grid-template-columns: 1fr; }
+    .button-map { gap: 9px; padding: 10px; }
+    .remote-key { min-height: 48px; }
+    .remote-key.temp { min-height: 108px; }
   }
 </style>
 </head>
@@ -127,6 +154,79 @@
 </div>
 <main class="content">
   <section class="tip-card" data-i18n="intro">Use the photos below to match the actual remote or panel in the room. The labels explain the main Japanese buttons.</section>
+
+  <section class="ac-board" aria-label="Air conditioner button translation guide">
+    <h2 class="ac-board-title" data-i18n="acBoardTitle">Air Conditioner Button Guide</h2>
+    <div class="ac-language-row">
+      <div class="button-map" aria-label="English air conditioner buttons">
+        <div class="remote-key cool">COOL</div>
+        <div class="remote-key temp"><span class="triangle">▲</span><span>TEMP.</span><span class="divider"></span><span>SET TEMP.</span><span class="triangle">▼</span></div>
+        <div class="remote-key heat">HEAT</div>
+        <div class="remote-key dry">DRY</div>
+        <div class="remote-key auto">AUTO</div>
+        <div class="remote-key sleep">SLEEP TIMER</div>
+        <div class="remote-key stop">－ STOP</div>
+      </div>
+      <div class="language-list">
+        <span class="lang-tag">ENGLISH</span>
+        <ul>
+          <li>COOL</li>
+          <li>TEMP. / SET TEMP.</li>
+          <li>HEAT</li>
+          <li>DRY</li>
+          <li>AUTO</li>
+          <li>SLEEP TIMER</li>
+          <li>STOP</li>
+        </ul>
+      </div>
+    </div>
+    <div class="ac-language-row">
+      <div class="button-map" aria-label="Chinese air conditioner buttons">
+        <div class="remote-key cool">制冷</div>
+        <div class="remote-key temp"><span class="triangle">▲</span><span>温度</span><span class="divider"></span><span>设定温度</span><span class="triangle">▼</span></div>
+        <div class="remote-key heat">制热</div>
+        <div class="remote-key dry">除湿</div>
+        <div class="remote-key auto">自动</div>
+        <div class="remote-key sleep">睡眠定时</div>
+        <div class="remote-key stop">－ 停止</div>
+      </div>
+      <div class="language-list">
+        <span class="lang-tag zh">中文（简体）</span>
+        <ul>
+          <li>制冷</li>
+          <li>温度 / 设定温度</li>
+          <li>制热</li>
+          <li>除湿</li>
+          <li>自动</li>
+          <li>睡眠定时</li>
+          <li>停止</li>
+        </ul>
+      </div>
+    </div>
+    <div class="ac-language-row">
+      <div class="button-map" aria-label="Korean air conditioner buttons">
+        <div class="remote-key cool">냉방</div>
+        <div class="remote-key temp"><span class="triangle">▲</span><span>온도</span><span class="divider"></span><span>설정 온도</span><span class="triangle">▼</span></div>
+        <div class="remote-key heat">난방</div>
+        <div class="remote-key dry">제습</div>
+        <div class="remote-key auto">자동</div>
+        <div class="remote-key sleep">취침 타이머</div>
+        <div class="remote-key stop">－ 정지</div>
+      </div>
+      <div class="language-list">
+        <span class="lang-tag ko">한국어</span>
+        <ul>
+          <li>냉방</li>
+          <li>온도 / 설정 온도</li>
+          <li>난방</li>
+          <li>제습</li>
+          <li>자동</li>
+          <li>취침 타이머</li>
+          <li>정지</li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
   <section class="device-card wide">
     <div class="photo-frame">
@@ -260,6 +360,7 @@
 const S = {
   en: {
     intro: 'Use the photos below to match the actual remote or panel in the room. The labels explain the main Japanese buttons.',
+    acBoardTitle: 'Air Conditioner Button Guide',
     tvTitle: 'TV Remote',
     tvNote: 'Use the red power button at the top. Netflix, YouTube, Hulu, ABEMA, and Live TV have dedicated buttons.',
     tvPower: 'Power',
@@ -308,6 +409,7 @@ const S = {
   },
   ja: {
     intro: '室内の実物リモコンやパネルと照らし合わせてご確認ください。主な日本語ボタンの意味をまとめています。',
+    acBoardTitle: 'エアコンボタン早見表',
     tvTitle: 'テレビリモコン',
     tvNote: '上部の赤い電源ボタンでオン/オフできます。Netflix、YouTube、Hulu、ABEMA、Live TV は専用ボタンがあります。',
     tvPower: '電源',
@@ -356,6 +458,7 @@ const S = {
   },
   zh: {
     intro: '请对照房间里的实际遥控器或面板查看。下面说明主要日文按钮的意思。',
+    acBoardTitle: '空调按钮速查表',
     tvTitle: '电视遥控器',
     tvNote: '顶部红色按钮是电源。Netflix、YouTube、Hulu、ABEMA 和 Live TV 有专用按钮。',
     tvPower: '电源',
@@ -404,6 +507,7 @@ const S = {
   },
   ko: {
     intro: '실제 객실의 리모컨이나 패널과 대조해 확인해 주세요. 주요 일본어 버튼의 뜻을 정리했습니다.',
+    acBoardTitle: '에어컨 버튼 안내',
     tvTitle: 'TV 리모컨',
     tvNote: '상단의 빨간 전원 버튼으로 켜고 끌 수 있습니다. Netflix, YouTube, Hulu, ABEMA, Live TV 전용 버튼이 있습니다.',
     tvPower: '전원',
@@ -452,6 +556,7 @@ const S = {
   },
   fr: {
     intro: 'Comparez avec la telecommande ou le panneau dans la chambre. Les libelles expliquent les principaux boutons japonais.',
+    acBoardTitle: 'Guide des boutons de climatisation',
     tvTitle: 'Telecommande TV',
     tvNote: 'Utilisez le bouton rouge en haut pour allumer ou eteindre. Netflix, YouTube, Hulu, ABEMA et Live TV ont des boutons dedies.',
     tvPower: 'Marche / arret',
@@ -500,6 +605,7 @@ const S = {
   },
   es: {
     intro: 'Compare con el control o panel real de la habitacion. Las etiquetas explican los botones japoneses principales.',
+    acBoardTitle: 'Guia de botones del aire acondicionado',
     tvTitle: 'Control remoto de TV',
     tvNote: 'Use el boton rojo superior para encender o apagar. Netflix, YouTube, Hulu, ABEMA y Live TV tienen botones dedicados.',
     tvPower: 'Encendido',

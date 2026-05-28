@@ -3,138 +3,85 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Equipment — Feliz Stay 1002</title>
+<title>Equipment - Feliz Stay 1002</title>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=Pacifico&display=swap" rel="stylesheet">
 <style>
   :root {
     --accent: #3a9457;
+    --accent-dark: #1f6b38;
     --accent-light: #b2d9be;
     --cream: #fdf6ee;
-    --text-dark: #3a3232;
-    --text-mid: #6b5a5a;
-    --line: rgba(58,148,87,0.16);
+    --ink: #3a3232;
+    --muted: #6b5a5a;
+    --rose: #a96f7d;
+    --panel: #8fb7ad;
+    --slate: #4d6270;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'Nunito', sans-serif; background: var(--cream); color: var(--text-dark); min-height: 100vh; }
+  body { font-family: 'Nunito', sans-serif; background: var(--cream); color: var(--ink); min-height: 100vh; }
   .lang-bar { display: flex; justify-content: center; gap: 6px; padding: 10px 16px; flex-wrap: wrap; background: var(--cream); }
-  .lang-btn { border: 2px solid var(--accent-light); background: rgba(255,255,255,0.92); border-radius: 50px; padding: 4px 9px; font-family: 'Nunito', sans-serif; font-size: 0.72rem; font-weight: 800; color: var(--text-mid); cursor: pointer; transition: all 0.2s; box-shadow: 0 2px 8px rgba(120,80,60,0.12); }
+  .lang-btn { border: 2px solid var(--accent-light); background: rgba(255,255,255,0.92); border-radius: 50px; padding: 4px 9px; font-family: 'Nunito', sans-serif; font-size: 0.72rem; font-weight: 800; color: var(--muted); cursor: pointer; transition: all 0.2s; box-shadow: 0 2px 8px rgba(120,80,60,0.12); }
   .lang-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; }
   .lang-btn:hover:not(.active) { border-color: var(--accent); color: var(--accent); }
-  .top-bar { background: linear-gradient(135deg, var(--accent) 0%, color-mix(in srgb, var(--accent) 70%, black) 100%); padding: 16px 20px; display: flex; align-items: center; gap: 14px; position: sticky; top: 0; z-index: 10; box-shadow: 0 2px 12px rgba(0,0,0,0.15); }
+  .top-bar { background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%); padding: 16px 20px; display: flex; align-items: center; gap: 14px; position: sticky; top: 0; z-index: 10; box-shadow: 0 2px 12px rgba(0,0,0,0.15); }
   .back-btn { background: rgba(255,255,255,0.25); border-radius: 50%; width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 1.2rem; color: #fff; text-decoration: none; flex-shrink: 0; transition: background 0.2s; }
   .back-btn:hover { background: rgba(255,255,255,0.4); }
   .top-title { font-family: 'Pacifico', cursive; font-size: 1.3rem; color: #fff; text-shadow: 1px 2px 4px rgba(0,0,0,0.2); flex: 1; }
   .top-emoji { font-size: 1.8rem; }
   .content { padding: 18px 14px 40px; max-width: 760px; margin: 0 auto; }
-  .device-card { background: #fff; border-radius: 14px; margin-bottom: 18px; overflow: hidden; box-shadow: 0 4px 16px rgba(0,0,0,0.11); border: 1px solid rgba(255,255,255,0.8); }
-  .photo-frame {
-    position: relative;
-    min-height: 330px;
-    display: grid;
-    place-items: center;
-    overflow: hidden;
-    padding: 18px;
-    background:
-      linear-gradient(135deg, rgba(58,148,87,0.12) 0 24%, transparent 24% 62%, rgba(58,148,87,0.10) 62% 100%),
-      linear-gradient(145deg, #f9fbf5, #eef7ef);
-  }
-  .photo-frame::after {
-    content: "";
-    position: absolute;
-    inset: 12px;
-    border: 1px solid rgba(58,148,87,0.16);
-    border-radius: 14px;
-    pointer-events: none;
-  }
-  .photo-frame img {
-    display: block;
-    width: min(76%, 270px);
-    height: auto;
-    max-height: 390px;
-    object-fit: contain;
-    object-position: center;
-    border-radius: 18px;
-    box-shadow: 0 18px 28px rgba(0,0,0,0.18);
-    background: #fff;
-  }
-  .photo-frame.square img {
-    width: min(88%, 360px);
-    max-height: 350px;
-    object-fit: cover;
-  }
-  .photo-frame.panel img {
-    width: calc(100% - 14px);
-    height: 320px;
-    max-height: none;
-    object-fit: cover;
-  }
-  .label-chip {
-    position: absolute;
-    z-index: 2;
-    background: var(--accent);
-    color: #fff;
-    border-radius: 999px;
-    padding: 6px 10px;
-    font-size: 0.74rem;
-    font-weight: 900;
-    line-height: 1;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    white-space: nowrap;
-  }
-  .chip-blue { background: #1976d2; }
-  .chip-orange { background: #e66f2d; }
-  .chip-yellow { background: #d99b19; }
-  .chip-red { background: #c62828; }
-  .chip-gray { background: #4f5b62; }
-  .pos-tl { top: 20px; left: 18px; }
-  .pos-tr { top: 20px; right: 18px; }
-  .pos-ml { top: 48%; left: 16px; }
-  .pos-mr { top: 48%; right: 16px; }
-  .pos-bl { bottom: 20px; left: 18px; }
-  .pos-br { bottom: 20px; right: 18px; }
-  .device-body { padding: 15px 16px 17px; }
-  .device-title { color: var(--accent); font-size: 1.02rem; font-weight: 900; margin-bottom: 8px; }
-  .device-note { color: var(--text-mid); font-size: 0.92rem; font-weight: 800; line-height: 1.55; margin-bottom: 12px; }
-  .term-list { display: grid; gap: 7px; border-top: 1px solid var(--line); padding-top: 12px; }
-  .term-row { display: grid; grid-template-columns: minmax(94px, 0.8fr) 1fr; gap: 10px; align-items: start; }
-  .jp { color: var(--text-dark); font-weight: 900; font-size: 0.9rem; line-height: 1.3; }
-  .meaning { color: var(--text-mid); font-weight: 800; font-size: 0.9rem; line-height: 1.35; }
-  .tip-card { background: rgba(255,255,255,0.9); border-left: 5px solid var(--accent); border-radius: 12px; padding: 13px 15px; color: var(--text-mid); font-size: 0.92rem; font-weight: 800; line-height: 1.6; margin-bottom: 18px; box-shadow: 0 2px 10px rgba(120,80,60,0.07); }
-  .ac-board { background: #fff; border-radius: 14px; overflow: hidden; margin-bottom: 18px; box-shadow: 0 4px 16px rgba(0,0,0,0.11); border: 1px solid rgba(0,0,0,0.06); }
-  .ac-board-title { padding: 14px 16px; color: var(--accent); font-size: 1.05rem; font-weight: 900; border-bottom: 1px solid rgba(0,0,0,0.06); }
-  .ac-language-row { display: grid; grid-template-columns: minmax(0, 1.85fr) minmax(150px, 0.9fr); gap: 14px; padding: 14px; border-bottom: 1px solid rgba(0,0,0,0.08); align-items: stretch; }
-  .ac-language-row:last-child { border-bottom: 0; }
-  .button-map { background: #f9f8f5; border-radius: 8px; padding: 12px; display: grid; grid-template-columns: 1fr 0.86fr 1fr; grid-template-rows: repeat(3, minmax(52px, auto)); gap: 12px 14px; align-items: center; box-shadow: inset 0 0 0 1px rgba(0,0,0,0.06); }
-  .remote-key { border: 2px solid rgba(0,0,0,0.75); border-radius: 13px; min-height: 52px; display: flex; align-items: center; justify-content: center; text-align: center; padding: 7px 9px; color: #111; font-weight: 900; font-size: clamp(1rem, 3.3vw, 1.55rem); line-height: 1.08; box-shadow: 0 4px 0 rgba(0,0,0,0.16), inset 0 10px 16px rgba(255,255,255,0.55); background: linear-gradient(#fff, #eee9dc); }
-  .remote-key.cool { background: linear-gradient(#dff8f6, #9fded8); }
-  .remote-key.heat { background: linear-gradient(#ffc084, #f28a3a); }
-  .remote-key.dry { background: linear-gradient(#fff49b, #ffd645); }
-  .remote-key.auto { background: linear-gradient(#eee4ff, #c7b3e8); }
-  .remote-key.temp { grid-row: span 2; min-height: 118px; flex-direction: column; gap: 6px; font-size: clamp(0.95rem, 3vw, 1.35rem); }
-  .remote-key.sleep { grid-column: 1 / 2; font-size: clamp(0.9rem, 2.6vw, 1.35rem); }
-  .remote-key.stop { grid-column: 2 / 4; font-size: clamp(0.95rem, 2.7vw, 1.35rem); }
-  .triangle { font-size: 1.1em; line-height: 1; }
-  .divider { width: 70%; height: 1px; background: rgba(0,0,0,0.22); }
-  .language-list { padding: 2px 0; }
-  .lang-tag { display: inline-block; color: #fff; border-radius: 6px; padding: 5px 14px; font-weight: 900; font-size: 1.08rem; margin-bottom: 11px; background: #1769aa; }
-  .lang-tag.zh { background: #06853e; }
-  .lang-tag.ko { background: #c92532; }
-  .language-list ul { list-style: none; display: grid; gap: 8px; }
-  .language-list li { font-size: 1.05rem; font-weight: 900; line-height: 1.2; color: #171717; }
+  .intro-card { background: #fff; border-left: 5px solid var(--accent); border-radius: 12px; padding: 13px 15px; color: var(--muted); font-size: 0.92rem; font-weight: 800; line-height: 1.6; margin-bottom: 18px; box-shadow: 0 2px 10px rgba(120,80,60,0.07); }
+  .use-card { overflow: hidden; border-radius: 10px; margin-bottom: 18px; background: var(--panel); box-shadow: 0 4px 18px rgba(0,0,0,0.12); }
+  .use-card.alt { background: linear-gradient(90deg, var(--slate) 0 45%, var(--panel) 45% 100%); }
+  .use-title { padding: 24px 18px 14px; text-align: center; color: #fff; font-family: Georgia, 'Times New Roman', serif; font-size: 1.9rem; font-weight: 900; text-shadow: 0 2px 4px rgba(0,0,0,0.22); }
+  .white-board { background: #fff; margin: 0 24px 0; padding: 18px 18px 0; min-height: 360px; position: relative; overflow: hidden; }
+  .instruction { text-align: center; font-family: Georgia, 'Times New Roman', serif; font-size: 1rem; font-weight: 900; line-height: 1.35; color: #47414a; max-width: 560px; margin: 4px auto 16px; }
+  .remote-diagram { position: relative; min-height: 520px; }
+  .remote-diagram img { position: relative; z-index: 1; display: block; width: min(45%, 235px); max-height: 500px; object-fit: contain; margin: 0 auto; filter: drop-shadow(0 10px 16px rgba(0,0,0,0.18)); }
+  .callout { position: absolute; z-index: 2; display: flex; align-items: center; gap: 12px; color: var(--rose); font-family: Georgia, 'Times New Roman', serif; font-weight: 900; font-size: clamp(0.82rem, 3.1vw, 1.25rem); line-height: 1; text-transform: uppercase; white-space: nowrap; }
+  .callout::after { content: ""; height: 2px; background: #6d6670; flex: 1; min-width: 56px; }
+  .callout.right { flex-direction: row-reverse; }
+  .callout.left-cool { left: 0; top: 36%; width: 46%; }
+  .callout.left-temp-up { left: 0; top: 45%; width: 43%; }
+  .callout.left-temp-down { left: 0; top: 55%; width: 41%; }
+  .callout.right-heat { right: 0; top: 35%; width: 45%; }
+  .callout.right-stop { right: 0; top: 47%; width: 44%; }
+  .callout.right-fan { right: 0; top: 59%; width: 47%; }
+  .bottom-note { margin-top: 0; padding: 14px 18px; background: var(--rose); color: #fff; font-family: Georgia, 'Times New Roman', serif; font-weight: 900; line-height: 1.45; font-size: 1.05rem; }
+  .remote-options { display: grid; gap: 12px; padding: 14px; background: #fff; }
+  .remote-option { display: grid; grid-template-columns: 112px 1fr; gap: 12px; align-items: center; background: #fbfaf7; border: 1px solid rgba(58,148,87,0.18); border-radius: 10px; padding: 10px; }
+  .remote-option img { width: 100%; max-height: 170px; object-fit: contain; border-radius: 8px; background: #fff; box-shadow: 0 6px 14px rgba(0,0,0,0.12); }
+  .remote-option h3 { color: var(--accent); font-size: 0.98rem; font-weight: 900; margin-bottom: 6px; }
+  .remote-option p { color: var(--muted); font-size: 0.88rem; line-height: 1.48; font-weight: 800; }
+  .quick-grid { display: grid; gap: 12px; margin-top: 18px; }
+  .quick-card { background: #fff; border-radius: 12px; padding: 14px; box-shadow: 0 2px 12px rgba(120,80,60,0.08); border-top: 4px solid var(--accent); }
+  .quick-card h2 { color: var(--accent); font-size: 1rem; font-weight: 900; margin-bottom: 7px; }
+  .quick-card p { color: var(--muted); font-size: 0.9rem; font-weight: 800; line-height: 1.55; }
+  .quick-card img { width: 100%; max-height: 250px; object-fit: contain; border-radius: 10px; background: #f8f4ef; margin-bottom: 10px; }
+  .hot-water-layout { display: grid; grid-template-columns: minmax(145px, 0.75fr) 1fr; gap: 14px; align-items: center; }
+  .hot-water-layout img { width: 100%; max-height: 310px; object-fit: contain; filter: drop-shadow(0 10px 16px rgba(0,0,0,0.18)); }
+  .step-list { list-style: none; display: grid; gap: 8px; }
+  .step-list li { color: var(--ink); font-size: 0.92rem; font-weight: 900; line-height: 1.4; padding-left: 1.8em; position: relative; }
+  .step-list li::before { content: "✓"; position: absolute; left: 0; color: var(--accent); }
   .back-footer { text-align: center; margin-top: 28px; padding-bottom: 20px; }
   .back-footer a { display: inline-flex; align-items: center; gap: 8px; background: var(--accent); color: #fff; text-decoration: none; padding: 12px 28px; border-radius: 50px; font-weight: 800; font-size: 0.9rem; box-shadow: 0 4px 12px rgba(0,0,0,0.2); transition: transform 0.2s; }
   .back-footer a:hover { transform: scale(1.04); }
   @media (min-width: 720px) {
-    .device-card.wide { display: grid; grid-template-columns: minmax(260px, 0.9fr) 1.1fr; align-items: stretch; }
-    .device-card.wide .photo-frame { min-height: 430px; }
-    .device-card.wide .photo-frame img { max-height: 430px; }
-    .device-card.wide .photo-frame.square img { max-height: 360px; }
+    .quick-grid { grid-template-columns: repeat(2, 1fr); }
+    .remote-options { grid-template-columns: repeat(2, 1fr); }
+    .remote-option.featured { grid-column: 1 / -1; }
   }
   @media (max-width: 560px) {
-    .ac-language-row { grid-template-columns: 1fr; }
-    .button-map { gap: 9px; padding: 10px; }
-    .remote-key { min-height: 48px; }
-    .remote-key.temp { min-height: 108px; }
+    .content { padding-left: 12px; padding-right: 12px; }
+    .use-title { font-size: 1.45rem; padding-top: 20px; }
+    .white-board { margin: 0 12px; padding: 14px 10px 0; }
+    .instruction { font-size: 0.88rem; }
+    .remote-diagram { min-height: 455px; }
+    .remote-diagram img { width: min(46%, 170px); max-height: 420px; }
+    .callout { gap: 7px; }
+    .callout::after { min-width: 34px; }
+    .bottom-note { font-size: 0.9rem; }
+    .remote-option { grid-template-columns: 88px 1fr; }
+    .hot-water-layout { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -153,202 +100,75 @@
   <div class="top-title">Equipment</div>
 </div>
 <main class="content">
-  <section class="tip-card" data-i18n="intro">Use the photos below to match the actual remote or panel in the room. The labels explain the main Japanese buttons.</section>
+  <section class="intro-card" data-i18n="intro">Use the photos below to match the actual remote or panel in the room. The main instructions are shown as quick-use guides.</section>
 
-  <section class="ac-board" aria-label="Air conditioner button translation guide">
-    <h2 class="ac-board-title" data-i18n="acBoardTitle">Air Conditioner Button Guide</h2>
-    <div class="ac-language-row">
-      <div class="button-map" aria-label="English air conditioner buttons">
-        <div class="remote-key cool">COOL</div>
-        <div class="remote-key temp"><span class="triangle">▲</span><span>TEMP.</span><span class="divider"></span><span>SET TEMP.</span><span class="triangle">▼</span></div>
-        <div class="remote-key heat">HEAT</div>
-        <div class="remote-key dry">DRY</div>
-        <div class="remote-key auto">AUTO</div>
-        <div class="remote-key sleep">SLEEP TIMER</div>
-        <div class="remote-key stop">－ STOP</div>
-      </div>
-      <div class="language-list">
-        <span class="lang-tag">ENGLISH</span>
-        <ul>
-          <li>COOL</li>
-          <li>TEMP. / SET TEMP.</li>
-          <li>HEAT</li>
-          <li>DRY</li>
-          <li>AUTO</li>
-          <li>SLEEP TIMER</li>
-          <li>STOP</li>
-        </ul>
+  <section class="use-card">
+    <h1 class="use-title" data-i18n="acTitle">How to use A/C</h1>
+    <div class="white-board">
+      <p class="instruction" data-i18n="acIntro">Press COOL or HEAT to turn on A/C. Adjust temperature and fan volume with the buttons shown below.</p>
+      <div class="remote-diagram">
+        <img src="../assets/equipment-ac-daikin-1002-crop.jpg" alt="Daikin air conditioner remote" data-i18n-alt="daikinAlt">
+        <div class="callout left-cool"><span data-i18n="cool">COOL</span></div>
+        <div class="callout left-temp-up"><span data-i18n="tempUp">HIGHER TEMP.</span></div>
+        <div class="callout left-temp-down"><span data-i18n="tempDown">LOWER TEMP.</span></div>
+        <div class="callout right right-heat"><span data-i18n="heat">HEAT</span></div>
+        <div class="callout right right-stop"><span data-i18n="stop">STOP</span></div>
+        <div class="callout right right-fan"><span data-i18n="fan">AIR VOLUME</span></div>
       </div>
     </div>
-    <div class="ac-language-row">
-      <div class="button-map" aria-label="Chinese air conditioner buttons">
-        <div class="remote-key cool">制冷</div>
-        <div class="remote-key temp"><span class="triangle">▲</span><span>温度</span><span class="divider"></span><span>设定温度</span><span class="triangle">▼</span></div>
-        <div class="remote-key heat">制热</div>
-        <div class="remote-key dry">除湿</div>
-        <div class="remote-key auto">自动</div>
-        <div class="remote-key sleep">睡眠定时</div>
-        <div class="remote-key stop">－ 停止</div>
-      </div>
-      <div class="language-list">
-        <span class="lang-tag zh">中文（简体）</span>
-        <ul>
-          <li>制冷</li>
-          <li>温度 / 设定温度</li>
-          <li>制热</li>
-          <li>除湿</li>
-          <li>自动</li>
-          <li>睡眠定时</li>
-          <li>停止</li>
-        </ul>
-      </div>
-    </div>
-    <div class="ac-language-row">
-      <div class="button-map" aria-label="Korean air conditioner buttons">
-        <div class="remote-key cool">냉방</div>
-        <div class="remote-key temp"><span class="triangle">▲</span><span>온도</span><span class="divider"></span><span>설정 온도</span><span class="triangle">▼</span></div>
-        <div class="remote-key heat">난방</div>
-        <div class="remote-key dry">제습</div>
-        <div class="remote-key auto">자동</div>
-        <div class="remote-key sleep">취침 타이머</div>
-        <div class="remote-key stop">－ 정지</div>
-      </div>
-      <div class="language-list">
-        <span class="lang-tag ko">한국어</span>
-        <ul>
-          <li>냉방</li>
-          <li>온도 / 설정 온도</li>
-          <li>난방</li>
-          <li>제습</li>
-          <li>자동</li>
-          <li>취침 타이머</li>
-          <li>정지</li>
-        </ul>
-      </div>
-    </div>
+    <div class="bottom-note" data-i18n="acNote">Note: Japanese homes typically do not have central heating systems. Air conditioners provide both cooling and heating but may take some time to fully adjust the room temperature.</div>
   </section>
 
-  <section class="device-card wide">
-    <div class="photo-frame">
-      <img src="../assets/equipment-tv-remote-1002-crop.jpg" alt="TV remote control" data-i18n-alt="tvAlt">
-      <span class="label-chip chip-red pos-tr">POWER</span>
-      <span class="label-chip chip-blue pos-bl">APPS</span>
-    </div>
-    <div class="device-body">
-      <h2 class="device-title" data-i18n="tvTitle">TV Remote</h2>
-      <p class="device-note" data-i18n="tvNote">Use the red power button at the top. Netflix, YouTube, Hulu, ABEMA, and Live TV have dedicated buttons.</p>
-      <div class="term-list">
-        <div class="term-row"><span class="jp">電源</span><span class="meaning" data-i18n="tvPower">Power</span></div>
-        <div class="term-row"><span class="jp">ホーム</span><span class="meaning" data-i18n="tvHome">Home / Smart TV menu</span></div>
-        <div class="term-row"><span class="jp">戻る</span><span class="meaning" data-i18n="tvBack">Back</span></div>
-        <div class="term-row"><span class="jp">終了</span><span class="meaning" data-i18n="tvExit">Exit</span></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="device-card wide">
-    <div class="photo-frame">
-      <img src="../assets/equipment-ac-daikin-1002-crop.jpg" alt="Daikin air conditioner remote" data-i18n-alt="daikinAlt">
-      <span class="label-chip pos-tl">AUTO</span>
-      <span class="label-chip chip-blue pos-ml">COOL</span>
-      <span class="label-chip chip-orange pos-mr">HEAT</span>
-      <span class="label-chip chip-gray pos-br">STOP</span>
-    </div>
-    <div class="device-body">
-      <h2 class="device-title" data-i18n="daikinTitle">Air Conditioner Remote</h2>
-      <p class="device-note" data-i18n="daikinNote">Choose AUTO, COOL, HEAT, DRY, or FAN, then adjust temperature and fan volume.</p>
-      <div class="term-list">
-        <div class="term-row"><span class="jp">自動</span><span class="meaning" data-i18n="auto">Auto</span></div>
-        <div class="term-row"><span class="jp">停止</span><span class="meaning" data-i18n="stop">Stop</span></div>
-        <div class="term-row"><span class="jp">冷房</span><span class="meaning" data-i18n="cool">Cool</span></div>
-        <div class="term-row"><span class="jp">暖房</span><span class="meaning" data-i18n="heat">Heat</span></div>
-        <div class="term-row"><span class="jp">ドライ</span><span class="meaning" data-i18n="dry">Dry / dehumidify</span></div>
-        <div class="term-row"><span class="jp">送風</span><span class="meaning" data-i18n="fanOnly">Fan only</span></div>
-        <div class="term-row"><span class="jp">温度</span><span class="meaning" data-i18n="temp">Temperature</span></div>
-        <div class="term-row"><span class="jp">風量</span><span class="meaning" data-i18n="fan">Fan speed</span></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="device-card wide">
-    <div class="photo-frame">
+  <section class="remote-options" aria-label="Other air conditioner remotes">
+    <article class="remote-option featured">
       <img src="../assets/equipment-ac-simple-1002-crop.jpg" alt="Air conditioner remote with colored buttons" data-i18n-alt="simpleAcAlt">
-      <span class="label-chip chip-orange pos-tl">HEAT</span>
-      <span class="label-chip chip-yellow pos-ml">DRY</span>
-      <span class="label-chip chip-blue pos-mr">COOL</span>
-      <span class="label-chip chip-gray pos-br">STOP</span>
-    </div>
-    <div class="device-body">
-      <h2 class="device-title" data-i18n="simpleAcTitle">Simple Air Conditioner Remote</h2>
-      <p class="device-note" data-i18n="simpleAcNote">Use the colored buttons for HEAT, DRY, and COOL. Use the large STOP button to turn it off.</p>
-      <div class="term-list">
-        <div class="term-row"><span class="jp">暖房</span><span class="meaning" data-i18n="heat">Heat</span></div>
-        <div class="term-row"><span class="jp">除湿</span><span class="meaning" data-i18n="dry">Dry / dehumidify</span></div>
-        <div class="term-row"><span class="jp">冷房</span><span class="meaning" data-i18n="cool">Cool</span></div>
-        <div class="term-row"><span class="jp">停止</span><span class="meaning" data-i18n="stop">Stop</span></div>
-        <div class="term-row"><span class="jp">室温</span><span class="meaning" data-i18n="roomTemp">Room temperature / temperature setting</span></div>
-        <div class="term-row"><span class="jp">風速 / 風向</span><span class="meaning" data-i18n="fanDirection">Fan speed / airflow direction</span></div>
+      <div>
+        <h3 data-i18n="simpleAcTitle">If your remote has colored buttons</h3>
+        <p data-i18n="simpleAcNote">Use the blue button for COOL, orange for HEAT, yellow for DRY, purple for AUTO, and the large STOP button to turn it off.</p>
       </div>
-    </div>
-  </section>
-
-  <section class="device-card wide">
-    <div class="photo-frame">
+    </article>
+    <article class="remote-option">
       <img src="../assets/equipment-ac-mitsubishi-1002-crop.jpg" alt="Mitsubishi air conditioner remote" data-i18n-alt="mitsubishiAlt">
-      <span class="label-chip pos-tl">START</span>
-      <span class="label-chip chip-blue pos-ml">TEMP.</span>
-      <span class="label-chip chip-gray pos-br">FAN</span>
-    </div>
-    <div class="device-body">
-      <h2 class="device-title" data-i18n="mitsubishiTitle">Mitsubishi Air Conditioner Remote</h2>
-      <p class="device-note" data-i18n="mitsubishiNote">Press operation to start, choose mode, then adjust temperature with the center buttons.</p>
-      <div class="term-list">
-        <div class="term-row"><span class="jp">運転 / 停止</span><span class="meaning" data-i18n="operationStop">Start / stop</span></div>
-        <div class="term-row"><span class="jp">運転切換</span><span class="meaning" data-i18n="modeChange">Change mode</span></div>
-        <div class="term-row"><span class="jp">温度</span><span class="meaning" data-i18n="temp">Temperature</span></div>
-        <div class="term-row"><span class="jp">風量</span><span class="meaning" data-i18n="fan">Fan speed</span></div>
-        <div class="term-row"><span class="jp">おやすみ</span><span class="meaning" data-i18n="sleep">Sleep timer</span></div>
+      <div>
+        <h3 data-i18n="mitsubishiTitle">Mitsubishi remote</h3>
+        <p data-i18n="mitsubishiNote">Press Operation to start or stop. Use Mode Change, Temperature, and Fan Volume to adjust comfort.</p>
       </div>
-    </div>
+    </article>
+    <article class="remote-option">
+      <img src="../assets/equipment-ac-daikin-1002-crop.jpg" alt="Daikin air conditioner remote" data-i18n-alt="daikinAlt">
+      <div>
+        <h3 data-i18n="daikinTitle">Daikin remote</h3>
+        <p data-i18n="daikinNote">Choose AUTO, COOL, HEAT, DRY, or FAN, then adjust temperature and fan volume.</p>
+      </div>
+    </article>
   </section>
 
-  <section class="device-card wide">
-    <div class="photo-frame panel">
+  <section class="use-card alt">
+    <h1 class="use-title" data-i18n="hotWaterTitle">How to use Hot Water</h1>
+    <div class="white-board">
+      <div class="hot-water-layout">
+        <img src="../assets/equipment-hot-water-1002-crop.jpg" alt="Hot water controller" data-i18n-alt="hotWaterAlt">
+        <ul class="step-list">
+          <li data-i18n="hotStep1">Press the operation button to turn on hot water.</li>
+          <li data-i18n="hotStep2">Use it before taking a bath or shower.</li>
+          <li data-i18n="hotStep3">Turn it off when you are finished.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="bottom-note" data-i18n="hotNote">If there is no hot water, check that this controller is on before contacting support.</div>
+  </section>
+
+  <section class="quick-grid">
+    <article class="quick-card">
+      <img src="../assets/equipment-tv-remote-1002-crop.jpg" alt="TV remote control" data-i18n-alt="tvAlt">
+      <h2 data-i18n="tvTitle">TV</h2>
+      <p data-i18n="tvNote">Use the red power button at the top. Netflix, YouTube, Hulu, ABEMA, and Live TV have dedicated buttons.</p>
+    </article>
+    <article class="quick-card">
       <img src="../assets/equipment-toilet-1002.jpg" alt="Toilet washlet control panel" data-i18n-alt="toiletAlt">
-      <span class="label-chip chip-gray pos-tl">STOP</span>
-      <span class="label-chip pos-ml">REAR</span>
-      <span class="label-chip chip-blue pos-mr">BIDET</span>
-      <span class="label-chip chip-yellow pos-br">PRESSURE</span>
-    </div>
-    <div class="device-body">
-      <h2 class="device-title" data-i18n="toiletTitle">Toilet Washlet</h2>
-      <p class="device-note" data-i18n="toiletNote">Use stop after using the spray. The plus and minus buttons adjust water pressure.</p>
-      <div class="term-list">
-        <div class="term-row"><span class="jp">止</span><span class="meaning" data-i18n="toiletStop">Stop</span></div>
-        <div class="term-row"><span class="jp">おしり</span><span class="meaning" data-i18n="rear">Rear wash</span></div>
-        <div class="term-row"><span class="jp">ビデ</span><span class="meaning" data-i18n="bidet">Bidet</span></div>
-        <div class="term-row"><span class="jp">水勢</span><span class="meaning" data-i18n="waterPressure">Water pressure</span></div>
-        <div class="term-row"><span class="jp">便座 / 便温</span><span class="meaning" data-i18n="seatTemp">Seat temperature</span></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="device-card wide">
-    <div class="photo-frame square">
-      <img src="../assets/equipment-hot-water-1002-crop.jpg" alt="Hot water controller" data-i18n-alt="hotWaterAlt">
-      <span class="label-chip pos-tl">TURN ON</span>
-      <span class="label-chip chip-orange pos-br">HOT WATER</span>
-    </div>
-    <div class="device-body">
-      <h2 class="device-title" data-i18n="hotWaterTitle">Hot Water</h2>
-      <p class="device-note" data-i18n="hotWaterNote">Press the operation button to turn on hot water before using the bath or shower.</p>
-      <div class="term-list">
-        <div class="term-row"><span class="jp">運転</span><span class="meaning" data-i18n="operation">Operation / on</span></div>
-        <div class="term-row"><span class="jp">給湯</span><span class="meaning" data-i18n="hotWater">Hot water</span></div>
-        <div class="term-row"><span class="jp">湯はり</span><span class="meaning" data-i18n="bathFill">Fill bathtub</span></div>
-        <div class="term-row"><span class="jp">湯温</span><span class="meaning" data-i18n="waterTemp">Water temperature</span></div>
-      </div>
-    </div>
+      <h2 data-i18n="toiletTitle">Toilet Washlet</h2>
+      <p data-i18n="toiletNote">Press REAR or BIDET to activate the spray. Press STOP after use. The plus and minus buttons adjust water pressure.</p>
+    </article>
   </section>
 
   <div class="back-footer">
@@ -359,297 +179,207 @@
 <script>
 const S = {
   en: {
-    intro: 'Use the photos below to match the actual remote or panel in the room. The labels explain the main Japanese buttons.',
-    acBoardTitle: 'Air Conditioner Button Guide',
-    tvTitle: 'TV Remote',
-    tvNote: 'Use the red power button at the top. Netflix, YouTube, Hulu, ABEMA, and Live TV have dedicated buttons.',
-    tvPower: 'Power',
-    tvHome: 'Home / Smart TV menu',
-    tvBack: 'Back',
-    tvExit: 'Exit',
-    daikinTitle: 'Air Conditioner Remote',
+    intro: 'Use the photos below to match the actual remote or panel in the room. The main instructions are shown as quick-use guides.',
+    acTitle: 'How to use A/C',
+    acIntro: 'Press COOL or HEAT to turn on A/C. Adjust temperature and fan volume with the buttons shown below.',
+    cool: 'COOL',
+    heat: 'HEAT',
+    stop: 'STOP',
+    fan: 'AIR VOLUME',
+    tempUp: 'HIGHER TEMP.',
+    tempDown: 'LOWER TEMP.',
+    acNote: 'Note: Japanese homes typically do not have central heating systems. Air conditioners provide both cooling and heating but may take some time to fully adjust the room temperature.',
+    simpleAcTitle: 'If your remote has colored buttons',
+    simpleAcNote: 'Use the blue button for COOL, orange for HEAT, yellow for DRY, purple for AUTO, and the large STOP button to turn it off.',
+    mitsubishiTitle: 'Mitsubishi remote',
+    mitsubishiNote: 'Press Operation to start or stop. Use Mode Change, Temperature, and Fan Volume to adjust comfort.',
+    daikinTitle: 'Daikin remote',
     daikinNote: 'Choose AUTO, COOL, HEAT, DRY, or FAN, then adjust temperature and fan volume.',
-    simpleAcTitle: 'Simple Air Conditioner Remote',
-    simpleAcNote: 'Use the colored buttons for HEAT, DRY, and COOL. Use the large STOP button to turn it off.',
-    mitsubishiTitle: 'Mitsubishi Air Conditioner Remote',
-    mitsubishiNote: 'Press operation to start, choose mode, then adjust temperature with the center buttons.',
-    auto: 'Auto',
-    stop: 'Stop',
-    cool: 'Cool',
-    heat: 'Heat',
-    dry: 'Dry / dehumidify',
-    fanOnly: 'Fan only',
-    temp: 'Temperature',
-    fan: 'Fan speed',
-    roomTemp: 'Room temperature / temperature setting',
-    fanDirection: 'Fan speed / airflow direction',
-    operationStop: 'Start / stop',
-    modeChange: 'Change mode',
-    sleep: 'Sleep timer',
+    hotWaterTitle: 'How to use Hot Water',
+    hotStep1: 'Press the operation button to turn on hot water.',
+    hotStep2: 'Use it before taking a bath or shower.',
+    hotStep3: 'Turn it off when you are finished.',
+    hotNote: 'If there is no hot water, check that this controller is on before contacting support.',
+    tvTitle: 'TV',
+    tvNote: 'Use the red power button at the top. Netflix, YouTube, Hulu, ABEMA, and Live TV have dedicated buttons.',
     toiletTitle: 'Toilet Washlet',
-    toiletNote: 'Use stop after using the spray. The plus and minus buttons adjust water pressure.',
-    toiletStop: 'Stop',
-    rear: 'Rear wash',
-    bidet: 'Bidet',
-    waterPressure: 'Water pressure',
-    seatTemp: 'Seat temperature',
-    hotWaterTitle: 'Hot Water',
-    hotWaterNote: 'Press the operation button to turn on hot water before using the bath or shower.',
-    operation: 'Operation / on',
-    hotWater: 'Hot water',
-    bathFill: 'Fill bathtub',
-    waterTemp: 'Water temperature',
-    tvAlt: 'TV remote control',
+    toiletNote: 'Press REAR or BIDET to activate the spray. Press STOP after use. The plus and minus buttons adjust water pressure.',
     daikinAlt: 'Daikin air conditioner remote',
     simpleAcAlt: 'Air conditioner remote with colored buttons',
     mitsubishiAlt: 'Mitsubishi air conditioner remote',
-    toiletAlt: 'Toilet washlet control panel',
     hotWaterAlt: 'Hot water controller',
+    tvAlt: 'TV remote control',
+    toiletAlt: 'Toilet washlet control panel',
     backToMenu: '← Back to Menu'
   },
   ja: {
-    intro: '室内の実物リモコンやパネルと照らし合わせてご確認ください。主な日本語ボタンの意味をまとめています。',
-    acBoardTitle: 'エアコンボタン早見表',
-    tvTitle: 'テレビリモコン',
-    tvNote: '上部の赤い電源ボタンでオン/オフできます。Netflix、YouTube、Hulu、ABEMA、Live TV は専用ボタンがあります。',
-    tvPower: '電源',
-    tvHome: 'ホーム / スマートTVメニュー',
-    tvBack: '戻る',
-    tvExit: '終了',
-    daikinTitle: 'エアコンリモコン',
-    daikinNote: '自動・冷房・暖房・ドライ・送風を選び、温度と風量を調整してください。',
-    simpleAcTitle: 'エアコンリモコン',
-    simpleAcNote: '色付きボタンで暖房・除湿・冷房を選べます。大きい停止ボタンでオフにします。',
-    mitsubishiTitle: '三菱エアコンリモコン',
-    mitsubishiNote: '運転で開始し、運転切換でモードを選び、中央のボタンで温度を調整します。',
-    auto: '自動',
-    stop: '停止',
+    intro: '室内の実物リモコンやパネルと照らし合わせて確認してください。主な使い方をガイド形式でまとめています。',
+    acTitle: 'エアコンの使い方',
+    acIntro: '冷房または暖房を押してエアコンをつけます。温度と風量は下のボタンで調整します。',
     cool: '冷房',
     heat: '暖房',
-    dry: '除湿 / ドライ',
-    fanOnly: '送風',
-    temp: '温度',
+    stop: '停止',
     fan: '風量',
-    roomTemp: '室温 / 温度設定',
-    fanDirection: '風速 / 風向',
-    operationStop: '運転 / 停止',
-    modeChange: '運転切換',
-    sleep: 'おやすみタイマー',
+    tempUp: '温度を上げる',
+    tempDown: '温度を下げる',
+    acNote: '日本の住宅は中央暖房ではないことが一般的です。エアコンで冷房・暖房の両方を行いますが、室温が整うまで少し時間がかかる場合があります。',
+    simpleAcTitle: '色付きボタンのリモコンの場合',
+    simpleAcNote: '青は冷房、オレンジは暖房、黄色は除湿、紫は自動です。大きい停止ボタンでオフにします。',
+    mitsubishiTitle: '三菱リモコン',
+    mitsubishiNote: '運転で開始・停止します。運転切換、温度、風量で調整してください。',
+    daikinTitle: 'ダイキンリモコン',
+    daikinNote: '自動・冷房・暖房・ドライ・送風を選び、温度と風量を調整します。',
+    hotWaterTitle: '給湯の使い方',
+    hotStep1: '運転ボタンを押して給湯をオンにします。',
+    hotStep2: 'お風呂やシャワーを使う前にオンにしてください。',
+    hotStep3: '使い終わったらオフにしてください。',
+    hotNote: 'お湯が出ない場合は、サポートへ連絡する前にこのコントローラーがオンになっているか確認してください。',
+    tvTitle: 'テレビ',
+    tvNote: '上部の赤い電源ボタンでオン/オフできます。Netflix、YouTube、Hulu、ABEMA、Live TV は専用ボタンがあります。',
     toiletTitle: 'ウォシュレット',
-    toiletNote: '洗浄後は「止」を押してください。+/- ボタンで水勢を調整できます。',
-    toiletStop: '停止',
-    rear: 'おしり洗浄',
-    bidet: 'ビデ',
-    waterPressure: '水勢',
-    seatTemp: '便座温度',
-    hotWaterTitle: '給湯',
-    hotWaterNote: 'お風呂やシャワーを使う前に「運転」ボタンを押して給湯をオンにしてください。',
-    operation: '運転 / オン',
-    hotWater: '給湯',
-    bathFill: '湯はり',
-    waterTemp: '湯温',
-    tvAlt: 'テレビリモコン',
+    toiletNote: 'おしりまたはビデで洗浄できます。使用後は停止を押してください。+/- で水勢を調整できます。',
     daikinAlt: 'ダイキンのエアコンリモコン',
     simpleAcAlt: '色付きボタンのエアコンリモコン',
     mitsubishiAlt: '三菱エアコンリモコン',
-    toiletAlt: 'ウォシュレット操作パネル',
     hotWaterAlt: '給湯コントローラー',
+    tvAlt: 'テレビリモコン',
+    toiletAlt: 'ウォシュレット操作パネル',
     backToMenu: '← メニューへ戻る'
   },
   zh: {
-    intro: '请对照房间里的实际遥控器或面板查看。下面说明主要日文按钮的意思。',
-    acBoardTitle: '空调按钮速查表',
-    tvTitle: '电视遥控器',
-    tvNote: '顶部红色按钮是电源。Netflix、YouTube、Hulu、ABEMA 和 Live TV 有专用按钮。',
-    tvPower: '电源',
-    tvHome: '主页 / 智能电视菜单',
-    tvBack: '返回',
-    tvExit: '退出',
-    daikinTitle: '空调遥控器',
-    daikinNote: '选择自动、制冷、制热、除湿或送风后，调节温度和风量。',
-    simpleAcTitle: '空调遥控器',
-    simpleAcNote: '彩色按钮可选择制热、除湿和制冷。使用大的停止按钮关闭。',
-    mitsubishiTitle: '三菱空调遥控器',
-    mitsubishiNote: '按运转开始，选择模式，然后用中间按钮调节温度。',
-    auto: '自动',
-    stop: '停止',
+    intro: '请对照房间里的实际遥控器或面板查看。主要使用方法以快速指南形式显示。',
+    acTitle: '空调使用方法',
+    acIntro: '按 COOL 或 HEAT 打开空调。用下方按钮调节温度和风量。',
     cool: '制冷',
     heat: '制热',
-    dry: '除湿 / 干燥',
-    fanOnly: '送风',
-    temp: '温度',
+    stop: '停止',
     fan: '风量',
-    roomTemp: '室温 / 温度设定',
-    fanDirection: '风速 / 风向',
-    operationStop: '开始 / 停止',
-    modeChange: '切换模式',
-    sleep: '睡眠定时',
+    tempUp: '升高温度',
+    tempDown: '降低温度',
+    acNote: '日本住宅通常没有中央供暖。空调可制冷和制热，但调节室温可能需要一些时间。',
+    simpleAcTitle: '如果遥控器有彩色按钮',
+    simpleAcNote: '蓝色为制冷，橙色为制热，黄色为除湿，紫色为自动。使用大的停止按钮关闭。',
+    mitsubishiTitle: '三菱遥控器',
+    mitsubishiNote: '按运转开始或停止。使用模式切换、温度和风量调节。',
+    daikinTitle: '大金遥控器',
+    daikinNote: '选择自动、制冷、制热、除湿或送风后，调节温度和风量。',
+    hotWaterTitle: '热水使用方法',
+    hotStep1: '按运转按钮打开热水。',
+    hotStep2: '洗澡或淋浴前请先打开。',
+    hotStep3: '使用结束后请关闭。',
+    hotNote: '如果没有热水，请先确认此控制器已打开，再联系支持。',
+    tvTitle: '电视',
+    tvNote: '顶部红色按钮是电源。Netflix、YouTube、Hulu、ABEMA 和 Live TV 有专用按钮。',
     toiletTitle: '温水马桶',
-    toiletNote: '使用清洗后请按停止。+/- 按钮可调节水压。',
-    toiletStop: '停止',
-    rear: '臀部清洗',
-    bidet: '妇洗',
-    waterPressure: '水压',
-    seatTemp: '座圈温度',
-    hotWaterTitle: '热水',
-    hotWaterNote: '使用浴缸或淋浴前，请按运转按钮打开热水。',
-    operation: '运转 / 开',
-    hotWater: '热水',
-    bathFill: '浴缸注水',
-    waterTemp: '热水温度',
-    tvAlt: '电视遥控器',
+    toiletNote: '按 REAR 或 BIDET 使用清洗功能。使用后请按 STOP。+/- 按钮可调节水压。',
     daikinAlt: '大金空调遥控器',
     simpleAcAlt: '带彩色按钮的空调遥控器',
     mitsubishiAlt: '三菱空调遥控器',
-    toiletAlt: '温水马桶操作面板',
     hotWaterAlt: '热水控制器',
+    tvAlt: '电视遥控器',
+    toiletAlt: '温水马桶操作面板',
     backToMenu: '← 返回菜单'
   },
   ko: {
-    intro: '실제 객실의 리모컨이나 패널과 대조해 확인해 주세요. 주요 일본어 버튼의 뜻을 정리했습니다.',
-    acBoardTitle: '에어컨 버튼 안내',
-    tvTitle: 'TV 리모컨',
-    tvNote: '상단의 빨간 전원 버튼으로 켜고 끌 수 있습니다. Netflix, YouTube, Hulu, ABEMA, Live TV 전용 버튼이 있습니다.',
-    tvPower: '전원',
-    tvHome: '홈 / 스마트 TV 메뉴',
-    tvBack: '뒤로',
-    tvExit: '종료',
-    daikinTitle: '에어컨 리모컨',
-    daikinNote: '자동, 냉방, 난방, 제습, 송풍을 선택한 뒤 온도와 풍량을 조절하세요.',
-    simpleAcTitle: '에어컨 리모컨',
-    simpleAcNote: '색상 버튼으로 난방, 제습, 냉방을 선택합니다. 큰 정지 버튼으로 끕니다.',
-    mitsubishiTitle: '미쓰비시 에어컨 리모컨',
-    mitsubishiNote: '운전 버튼으로 시작하고 모드를 선택한 뒤 가운데 버튼으로 온도를 조절합니다.',
-    auto: '자동',
-    stop: '정지',
+    intro: '객실의 실제 리모컨이나 패널과 대조해 확인해 주세요. 주요 사용법을 빠른 안내 형식으로 정리했습니다.',
+    acTitle: '에어컨 사용 방법',
+    acIntro: 'COOL 또는 HEAT를 눌러 에어컨을 켭니다. 아래 버튼으로 온도와 풍량을 조절하세요.',
     cool: '냉방',
     heat: '난방',
-    dry: '제습 / 드라이',
-    fanOnly: '송풍',
-    temp: '온도',
+    stop: '정지',
     fan: '풍량',
-    roomTemp: '실내 온도 / 온도 설정',
-    fanDirection: '풍속 / 풍향',
-    operationStop: '운전 / 정지',
-    modeChange: '운전 전환',
-    sleep: '취침 타이머',
+    tempUp: '온도 올림',
+    tempDown: '온도 내림',
+    acNote: '일본 주택에는 보통 중앙 난방이 없습니다. 에어컨으로 냉방과 난방을 모두 하지만 실내 온도가 맞춰지기까지 시간이 걸릴 수 있습니다.',
+    simpleAcTitle: '색상 버튼 리모컨인 경우',
+    simpleAcNote: '파란색은 냉방, 주황색은 난방, 노란색은 제습, 보라색은 자동입니다. 큰 정지 버튼으로 끕니다.',
+    mitsubishiTitle: '미쓰비시 리모컨',
+    mitsubishiNote: '운전 버튼으로 시작 또는 정지합니다. 운전 전환, 온도, 풍량으로 조절하세요.',
+    daikinTitle: '다이킨 리모컨',
+    daikinNote: '자동, 냉방, 난방, 제습, 송풍을 선택한 뒤 온도와 풍량을 조절합니다.',
+    hotWaterTitle: '온수 사용 방법',
+    hotStep1: '운전 버튼을 눌러 온수를 켭니다.',
+    hotStep2: '목욕이나 샤워 전에 켜 주세요.',
+    hotStep3: '사용 후에는 꺼 주세요.',
+    hotNote: '온수가 나오지 않으면 문의 전에 이 컨트롤러가 켜져 있는지 확인해 주세요.',
+    tvTitle: 'TV',
+    tvNote: '상단의 빨간 전원 버튼으로 켜고 끌 수 있습니다. Netflix, YouTube, Hulu, ABEMA, Live TV 전용 버튼이 있습니다.',
     toiletTitle: '비데',
-    toiletNote: '세정 후에는 정지 버튼을 눌러 주세요. +/- 버튼으로 수압을 조절할 수 있습니다.',
-    toiletStop: '정지',
-    rear: '후면 세정',
-    bidet: '비데 세정',
-    waterPressure: '수압',
-    seatTemp: '변좌 온도',
-    hotWaterTitle: '온수',
-    hotWaterNote: '욕조나 샤워를 사용하기 전에 운전 버튼을 눌러 온수를 켜 주세요.',
-    operation: '운전 / 켜기',
-    hotWater: '온수',
-    bathFill: '욕조 물 채우기',
-    waterTemp: '온수 온도',
-    tvAlt: 'TV 리모컨',
+    toiletNote: 'REAR 또는 BIDET 버튼으로 세정 기능을 사용합니다. 사용 후 STOP을 눌러 주세요. +/- 버튼으로 수압을 조절할 수 있습니다.',
     daikinAlt: '다이킨 에어컨 리모컨',
     simpleAcAlt: '색상 버튼이 있는 에어컨 리모컨',
     mitsubishiAlt: '미쓰비시 에어컨 리모컨',
-    toiletAlt: '비데 조작 패널',
     hotWaterAlt: '온수 컨트롤러',
+    tvAlt: 'TV 리모컨',
+    toiletAlt: '비데 조작 패널',
     backToMenu: '← 메뉴로 돌아가기'
   },
   fr: {
-    intro: 'Comparez avec la telecommande ou le panneau dans la chambre. Les libelles expliquent les principaux boutons japonais.',
-    acBoardTitle: 'Guide des boutons de climatisation',
-    tvTitle: 'Telecommande TV',
-    tvNote: 'Utilisez le bouton rouge en haut pour allumer ou eteindre. Netflix, YouTube, Hulu, ABEMA et Live TV ont des boutons dedies.',
-    tvPower: 'Marche / arret',
-    tvHome: 'Accueil / menu Smart TV',
-    tvBack: 'Retour',
-    tvExit: 'Quitter',
-    daikinTitle: 'Telecommande de climatisation',
-    daikinNote: 'Choisissez auto, froid, chaud, deshumidification ou ventilation, puis reglez la temperature et le debit d air.',
-    simpleAcTitle: 'Telecommande de climatisation',
-    simpleAcNote: 'Les boutons colores servent au chauffage, a la deshumidification et au froid. Le grand bouton stop eteint l appareil.',
+    intro: 'Comparez avec la telecommande ou le panneau dans la chambre. Les consignes principales sont presentees comme guides rapides.',
+    acTitle: 'Utiliser la climatisation',
+    acIntro: 'Appuyez sur COOL ou HEAT pour allumer la climatisation. Reglez la temperature et le debit d air avec les boutons indiques.',
+    cool: 'FROID',
+    heat: 'CHAUD',
+    stop: 'ARRET',
+    fan: 'DEBIT D AIR',
+    tempUp: 'TEMPERATURE +',
+    tempDown: 'TEMPERATURE -',
+    acNote: 'Les logements japonais n ont generalement pas de chauffage central. La climatisation assure le froid et le chaud, mais la temperature peut prendre du temps a s ajuster.',
+    simpleAcTitle: 'Telecommande avec boutons colores',
+    simpleAcNote: 'Bleu pour froid, orange pour chaud, jaune pour deshumidification, violet pour auto. Le grand bouton STOP eteint l appareil.',
     mitsubishiTitle: 'Telecommande Mitsubishi',
-    mitsubishiNote: 'Appuyez sur operation pour demarrer, choisissez le mode, puis reglez la temperature avec les boutons centraux.',
-    auto: 'Auto',
-    stop: 'Arret',
-    cool: 'Froid',
-    heat: 'Chauffage',
-    dry: 'Deshumidification',
-    fanOnly: 'Ventilation seule',
-    temp: 'Temperature',
-    fan: 'Debit d air',
-    roomTemp: 'Temperature ambiante / reglage',
-    fanDirection: 'Vitesse / direction d air',
-    operationStop: 'Marche / arret',
-    modeChange: 'Changer de mode',
-    sleep: 'Minuterie sommeil',
+    mitsubishiNote: 'Appuyez sur Operation pour demarrer ou arreter. Reglez avec mode, temperature et debit d air.',
+    daikinTitle: 'Telecommande Daikin',
+    daikinNote: 'Choisissez auto, froid, chaud, deshumidification ou ventilation, puis reglez la temperature et le debit d air.',
+    hotWaterTitle: 'Utiliser l eau chaude',
+    hotStep1: 'Appuyez sur operation pour activer l eau chaude.',
+    hotStep2: 'Allumez avant le bain ou la douche.',
+    hotStep3: 'Eteignez apres utilisation.',
+    hotNote: 'S il n y a pas d eau chaude, verifiez que ce controleur est allume avant de contacter le support.',
+    tvTitle: 'TV',
+    tvNote: 'Utilisez le bouton rouge en haut pour allumer ou eteindre. Netflix, YouTube, Hulu, ABEMA et Live TV ont des boutons dedies.',
     toiletTitle: 'Toilette lavante',
-    toiletNote: 'Appuyez sur stop apres le jet. Les boutons +/- reglent la pression de l eau.',
-    toiletStop: 'Arret',
-    rear: 'Lavage arriere',
-    bidet: 'Bidet',
-    waterPressure: 'Pression de l eau',
-    seatTemp: 'Temperature du siege',
-    hotWaterTitle: 'Eau chaude',
-    hotWaterNote: 'Appuyez sur operation pour activer l eau chaude avant le bain ou la douche.',
-    operation: 'Marche',
-    hotWater: 'Eau chaude',
-    bathFill: 'Remplir la baignoire',
-    waterTemp: 'Temperature de l eau',
-    tvAlt: 'Telecommande TV',
+    toiletNote: 'Appuyez sur REAR ou BIDET pour le jet. Appuyez sur STOP apres utilisation. Les boutons +/- reglent la pression.',
     daikinAlt: 'Telecommande de climatisation Daikin',
     simpleAcAlt: 'Telecommande de climatisation avec boutons colores',
     mitsubishiAlt: 'Telecommande de climatisation Mitsubishi',
-    toiletAlt: 'Panneau de toilette lavante',
     hotWaterAlt: 'Controleur d eau chaude',
+    tvAlt: 'Telecommande TV',
+    toiletAlt: 'Panneau de toilette lavante',
     backToMenu: '← Retour au menu'
   },
   es: {
-    intro: 'Compare con el control o panel real de la habitacion. Las etiquetas explican los botones japoneses principales.',
-    acBoardTitle: 'Guia de botones del aire acondicionado',
-    tvTitle: 'Control remoto de TV',
-    tvNote: 'Use el boton rojo superior para encender o apagar. Netflix, YouTube, Hulu, ABEMA y Live TV tienen botones dedicados.',
-    tvPower: 'Encendido',
-    tvHome: 'Inicio / menu Smart TV',
-    tvBack: 'Atras',
-    tvExit: 'Salir',
-    daikinTitle: 'Control de aire acondicionado',
-    daikinNote: 'Elija auto, frio, calor, seco o ventilador, luego ajuste temperatura y potencia.',
-    simpleAcTitle: 'Control de aire acondicionado',
-    simpleAcNote: 'Los botones de color son para calor, deshumidificar y frio. El boton grande stop apaga el equipo.',
+    intro: 'Compare con el control o panel real de la habitacion. Las instrucciones principales se muestran como guias rapidas.',
+    acTitle: 'Como usar el aire acondicionado',
+    acIntro: 'Pulse COOL o HEAT para encender el aire acondicionado. Ajuste temperatura y ventilador con los botones indicados.',
+    cool: 'FRIO',
+    heat: 'CALOR',
+    stop: 'PARAR',
+    fan: 'VENTILADOR',
+    tempUp: 'SUBIR TEMP.',
+    tempDown: 'BAJAR TEMP.',
+    acNote: 'Las viviendas japonesas normalmente no tienen calefaccion central. El aire acondicionado da frio y calor, pero puede tardar en ajustar la temperatura.',
+    simpleAcTitle: 'Control con botones de color',
+    simpleAcNote: 'Azul para frio, naranja para calor, amarillo para seco, morado para auto. El boton grande STOP apaga el equipo.',
     mitsubishiTitle: 'Control Mitsubishi',
-    mitsubishiNote: 'Pulse operacion para iniciar, elija el modo y ajuste la temperatura con los botones centrales.',
-    auto: 'Auto',
-    stop: 'Parar',
-    cool: 'Frio',
-    heat: 'Calor',
-    dry: 'Seco / deshumidificar',
-    fanOnly: 'Solo ventilador',
-    temp: 'Temperatura',
-    fan: 'Potencia del ventilador',
-    roomTemp: 'Temperatura ambiente / ajuste',
-    fanDirection: 'Velocidad / direccion del aire',
-    operationStop: 'Encender / parar',
-    modeChange: 'Cambiar modo',
-    sleep: 'Temporizador de sueno',
+    mitsubishiNote: 'Pulse Operation para iniciar o parar. Ajuste con modo, temperatura y ventilador.',
+    daikinTitle: 'Control Daikin',
+    daikinNote: 'Elija auto, frio, calor, seco o ventilador, luego ajuste temperatura y potencia.',
+    hotWaterTitle: 'Como usar el agua caliente',
+    hotStep1: 'Pulse operacion para encender el agua caliente.',
+    hotStep2: 'Enciendalo antes de banarse o ducharse.',
+    hotStep3: 'Apaguelo al terminar.',
+    hotNote: 'Si no hay agua caliente, compruebe que este controlador este encendido antes de contactar soporte.',
+    tvTitle: 'TV',
+    tvNote: 'Use el boton rojo superior para encender o apagar. Netflix, YouTube, Hulu, ABEMA y Live TV tienen botones dedicados.',
     toiletTitle: 'Inodoro con bidet',
-    toiletNote: 'Pulse stop despues del spray. Los botones +/- ajustan la presion del agua.',
-    toiletStop: 'Parar',
-    rear: 'Lavado posterior',
-    bidet: 'Bidet',
-    waterPressure: 'Presion del agua',
-    seatTemp: 'Temperatura del asiento',
-    hotWaterTitle: 'Agua caliente',
-    hotWaterNote: 'Pulse operacion para activar el agua caliente antes de usar banera o ducha.',
-    operation: 'Operacion / encender',
-    hotWater: 'Agua caliente',
-    bathFill: 'Llenar banera',
-    waterTemp: 'Temperatura del agua',
-    tvAlt: 'Control remoto de TV',
+    toiletNote: 'Pulse REAR o BIDET para activar el spray. Pulse STOP despues de usar. Los botones +/- ajustan la presion.',
     daikinAlt: 'Control Daikin de aire acondicionado',
     simpleAcAlt: 'Control de aire acondicionado con botones de color',
     mitsubishiAlt: 'Control Mitsubishi de aire acondicionado',
-    toiletAlt: 'Panel de inodoro con bidet',
     hotWaterAlt: 'Controlador de agua caliente',
+    tvAlt: 'Control remoto de TV',
+    toiletAlt: 'Panel de inodoro con bidet',
     backToMenu: '← Volver al menu'
   }
 };

@@ -32,21 +32,20 @@
   .intro-card { background: #fff; border-left: 5px solid var(--accent); border-radius: 12px; padding: 13px 15px; color: var(--muted); font-size: 0.92rem; font-weight: 800; line-height: 1.6; margin-bottom: 18px; box-shadow: 0 2px 10px rgba(120,80,60,0.07); }
   .use-card { overflow: hidden; border-radius: 10px; margin-bottom: 18px; background: var(--panel); box-shadow: 0 4px 18px rgba(0,0,0,0.12); }
   .use-card.alt { background: linear-gradient(90deg, var(--slate) 0 45%, var(--panel) 45% 100%); }
-  .use-title { padding: 24px 18px 14px; text-align: center; color: #fff; font-family: Georgia, 'Times New Roman', serif; font-size: 1.9rem; font-weight: 900; text-shadow: 0 2px 4px rgba(0,0,0,0.22); }
+  .use-title { padding: 24px 18px 14px; text-align: center; color: #fff; font-family: 'Nunito', sans-serif; font-size: 1.8rem; font-weight: 900; text-shadow: 0 2px 4px rgba(0,0,0,0.22); }
   .white-board { background: #fff; margin: 0 24px 0; padding: 18px 18px 0; min-height: 360px; position: relative; overflow: hidden; }
-  .instruction { text-align: center; font-family: Georgia, 'Times New Roman', serif; font-size: 1rem; font-weight: 900; line-height: 1.35; color: #47414a; max-width: 560px; margin: 4px auto 16px; }
+  .instruction { text-align: center; font-family: 'Nunito', sans-serif; font-size: 0.98rem; font-weight: 900; line-height: 1.4; color: #47414a; max-width: 560px; margin: 4px auto 16px; }
   .remote-diagram { position: relative; min-height: 520px; }
   .remote-diagram img { position: relative; z-index: 1; display: block; width: min(45%, 235px); max-height: 500px; object-fit: contain; margin: 0 auto; filter: drop-shadow(0 10px 16px rgba(0,0,0,0.18)); }
-  .callout { position: absolute; z-index: 2; display: flex; align-items: center; gap: 12px; color: var(--rose); font-family: Georgia, 'Times New Roman', serif; font-weight: 900; font-size: clamp(0.82rem, 3.1vw, 1.25rem); line-height: 1; text-transform: uppercase; white-space: nowrap; }
-  .callout::after { content: ""; height: 2px; background: #6d6670; flex: 1; min-width: 56px; }
+  .callout { position: absolute; z-index: 2; display: flex; align-items: center; gap: 10px; color: var(--rose); font-family: 'Nunito', sans-serif; font-weight: 900; font-size: clamp(0.78rem, 2.7vw, 1.08rem); line-height: 1; text-transform: uppercase; white-space: nowrap; }
+  .callout::after { content: ""; height: 2px; background: #6d6670; flex: 1; min-width: 44px; }
   .callout.right { flex-direction: row-reverse; }
-  .callout.left-cool { left: 0; top: 36%; width: 46%; }
-  .callout.left-temp-up { left: 0; top: 45%; width: 43%; }
-  .callout.left-temp-down { left: 0; top: 55%; width: 41%; }
-  .callout.right-heat { right: 0; top: 35%; width: 45%; }
-  .callout.right-stop { right: 0; top: 47%; width: 44%; }
-  .callout.right-fan { right: 0; top: 59%; width: 47%; }
-  .bottom-note { margin-top: 0; padding: 14px 18px; background: var(--rose); color: #fff; font-family: Georgia, 'Times New Roman', serif; font-weight: 900; line-height: 1.45; font-size: 1.05rem; }
+  .callout.left-heat { left: 0; top: 33%; width: 41%; }
+  .callout.left-temp { left: 0; top: 57%; width: 40%; }
+  .callout.right-cool { right: 0; top: 33%; width: 41%; }
+  .callout.right-stop { right: 0; top: 40%; width: 40%; }
+  .callout.right-fan { right: 0; top: 50%; width: 41%; }
+  .bottom-note { margin-top: 0; padding: 14px 18px; background: var(--rose); color: #fff; font-family: 'Nunito', sans-serif; font-weight: 900; line-height: 1.45; font-size: 0.98rem; }
   .remote-options { display: grid; gap: 12px; padding: 14px; background: #fff; }
   .remote-option { display: grid; grid-template-columns: 112px 1fr; gap: 12px; align-items: center; background: #fbfaf7; border: 1px solid rgba(58,148,87,0.18); border-radius: 10px; padding: 10px; }
   .remote-option img { width: 100%; max-height: 170px; object-fit: contain; border-radius: 8px; background: #fff; box-shadow: 0 6px 14px rgba(0,0,0,0.12); }
@@ -107,11 +106,10 @@
     <div class="white-board">
       <p class="instruction" data-i18n="acIntro">Press COOL or HEAT to turn on A/C. Adjust temperature and fan volume with the buttons shown below.</p>
       <div class="remote-diagram">
-        <img src="../assets/equipment-ac-daikin-1002-crop.jpg" alt="Daikin air conditioner remote" data-i18n-alt="daikinAlt">
-        <div class="callout left-cool"><span data-i18n="cool">COOL</span></div>
-        <div class="callout left-temp-up"><span data-i18n="tempUp">HIGHER TEMP.</span></div>
-        <div class="callout left-temp-down"><span data-i18n="tempDown">LOWER TEMP.</span></div>
-        <div class="callout right right-heat"><span data-i18n="heat">HEAT</span></div>
+        <img src="../assets/equipment-ac-simple-1002-crop.jpg" alt="Air conditioner remote with colored buttons" data-i18n-alt="simpleAcAlt">
+        <div class="callout left-heat"><span data-i18n="heat">HEAT</span></div>
+        <div class="callout left-temp"><span data-i18n="temp">TEMP.</span></div>
+        <div class="callout right right-cool"><span data-i18n="cool">COOL</span></div>
         <div class="callout right right-stop"><span data-i18n="stop">STOP</span></div>
         <div class="callout right right-fan"><span data-i18n="fan">AIR VOLUME</span></div>
       </div>
@@ -120,13 +118,6 @@
   </section>
 
   <section class="remote-options" aria-label="Other air conditioner remotes">
-    <article class="remote-option featured">
-      <img src="../assets/equipment-ac-simple-1002-crop.jpg" alt="Air conditioner remote with colored buttons" data-i18n-alt="simpleAcAlt">
-      <div>
-        <h3 data-i18n="simpleAcTitle">If your remote has colored buttons</h3>
-        <p data-i18n="simpleAcNote">Use the blue button for COOL, orange for HEAT, yellow for DRY, purple for AUTO, and the large STOP button to turn it off.</p>
-      </div>
-    </article>
     <article class="remote-option">
       <img src="../assets/equipment-ac-mitsubishi-1002-crop.jpg" alt="Mitsubishi air conditioner remote" data-i18n-alt="mitsubishiAlt">
       <div>
@@ -181,16 +172,14 @@ const S = {
   en: {
     intro: 'Use the photos below to match the actual remote or panel in the room. The main instructions are shown as quick-use guides.',
     acTitle: 'How to use A/C',
-    acIntro: 'Press COOL or HEAT to turn on A/C. Adjust temperature and fan volume with the buttons shown below.',
+    acIntro: 'Press COOL or HEAT to turn on A/C. Use DRY for dehumidifying. Adjust temperature and fan volume with the buttons shown below.',
     cool: 'COOL',
     heat: 'HEAT',
+    dry: 'DRY',
     stop: 'STOP',
     fan: 'AIR VOLUME',
-    tempUp: 'HIGHER TEMP.',
-    tempDown: 'LOWER TEMP.',
+    temp: 'TEMP.',
     acNote: 'Note: Japanese homes typically do not have central heating systems. Air conditioners provide both cooling and heating but may take some time to fully adjust the room temperature.',
-    simpleAcTitle: 'If your remote has colored buttons',
-    simpleAcNote: 'Use the blue button for COOL, orange for HEAT, yellow for DRY, purple for AUTO, and the large STOP button to turn it off.',
     mitsubishiTitle: 'Mitsubishi remote',
     mitsubishiNote: 'Press Operation to start or stop. Use Mode Change, Temperature, and Fan Volume to adjust comfort.',
     daikinTitle: 'Daikin remote',
@@ -215,16 +204,14 @@ const S = {
   ja: {
     intro: '室内の実物リモコンやパネルと照らし合わせて確認してください。主な使い方をガイド形式でまとめています。',
     acTitle: 'エアコンの使い方',
-    acIntro: '冷房または暖房を押してエアコンをつけます。温度と風量は下のボタンで調整します。',
+    acIntro: '冷房または暖房を押してエアコンをつけます。除湿したい場合はDRYを使います。温度と風量は下のボタンで調整します。',
     cool: '冷房',
     heat: '暖房',
+    dry: '除湿',
     stop: '停止',
     fan: '風量',
-    tempUp: '温度を上げる',
-    tempDown: '温度を下げる',
+    temp: '温度',
     acNote: '日本の住宅は中央暖房ではないことが一般的です。エアコンで冷房・暖房の両方を行いますが、室温が整うまで少し時間がかかる場合があります。',
-    simpleAcTitle: '色付きボタンのリモコンの場合',
-    simpleAcNote: '青は冷房、オレンジは暖房、黄色は除湿、紫は自動です。大きい停止ボタンでオフにします。',
     mitsubishiTitle: '三菱リモコン',
     mitsubishiNote: '運転で開始・停止します。運転切換、温度、風量で調整してください。',
     daikinTitle: 'ダイキンリモコン',
@@ -249,16 +236,14 @@ const S = {
   zh: {
     intro: '请对照房间里的实际遥控器或面板查看。主要使用方法以快速指南形式显示。',
     acTitle: '空调使用方法',
-    acIntro: '按 COOL 或 HEAT 打开空调。用下方按钮调节温度和风量。',
+    acIntro: '按 COOL 或 HEAT 打开空调。需要除湿时使用 DRY。用下方按钮调节温度和风量。',
     cool: '制冷',
     heat: '制热',
+    dry: '除湿',
     stop: '停止',
     fan: '风量',
-    tempUp: '升高温度',
-    tempDown: '降低温度',
+    temp: '温度',
     acNote: '日本住宅通常没有中央供暖。空调可制冷和制热，但调节室温可能需要一些时间。',
-    simpleAcTitle: '如果遥控器有彩色按钮',
-    simpleAcNote: '蓝色为制冷，橙色为制热，黄色为除湿，紫色为自动。使用大的停止按钮关闭。',
     mitsubishiTitle: '三菱遥控器',
     mitsubishiNote: '按运转开始或停止。使用模式切换、温度和风量调节。',
     daikinTitle: '大金遥控器',
@@ -283,16 +268,14 @@ const S = {
   ko: {
     intro: '객실의 실제 리모컨이나 패널과 대조해 확인해 주세요. 주요 사용법을 빠른 안내 형식으로 정리했습니다.',
     acTitle: '에어컨 사용 방법',
-    acIntro: 'COOL 또는 HEAT를 눌러 에어컨을 켭니다. 아래 버튼으로 온도와 풍량을 조절하세요.',
+    acIntro: 'COOL 또는 HEAT를 눌러 에어컨을 켭니다. 제습은 DRY를 사용하세요. 아래 버튼으로 온도와 풍량을 조절하세요.',
     cool: '냉방',
     heat: '난방',
+    dry: '제습',
     stop: '정지',
     fan: '풍량',
-    tempUp: '온도 올림',
-    tempDown: '온도 내림',
+    temp: '온도',
     acNote: '일본 주택에는 보통 중앙 난방이 없습니다. 에어컨으로 냉방과 난방을 모두 하지만 실내 온도가 맞춰지기까지 시간이 걸릴 수 있습니다.',
-    simpleAcTitle: '색상 버튼 리모컨인 경우',
-    simpleAcNote: '파란색은 냉방, 주황색은 난방, 노란색은 제습, 보라색은 자동입니다. 큰 정지 버튼으로 끕니다.',
     mitsubishiTitle: '미쓰비시 리모컨',
     mitsubishiNote: '운전 버튼으로 시작 또는 정지합니다. 운전 전환, 온도, 풍량으로 조절하세요.',
     daikinTitle: '다이킨 리모컨',
@@ -317,16 +300,14 @@ const S = {
   fr: {
     intro: 'Comparez avec la telecommande ou le panneau dans la chambre. Les consignes principales sont presentees comme guides rapides.',
     acTitle: 'Utiliser la climatisation',
-    acIntro: 'Appuyez sur COOL ou HEAT pour allumer la climatisation. Reglez la temperature et le debit d air avec les boutons indiques.',
+    acIntro: 'Appuyez sur COOL ou HEAT pour allumer la climatisation. Utilisez DRY pour deshumidifier. Reglez la temperature et le debit d air avec les boutons indiques.',
     cool: 'FROID',
     heat: 'CHAUD',
+    dry: 'DESHUM.',
     stop: 'ARRET',
     fan: 'DEBIT D AIR',
-    tempUp: 'TEMPERATURE +',
-    tempDown: 'TEMPERATURE -',
+    temp: 'TEMP.',
     acNote: 'Les logements japonais n ont generalement pas de chauffage central. La climatisation assure le froid et le chaud, mais la temperature peut prendre du temps a s ajuster.',
-    simpleAcTitle: 'Telecommande avec boutons colores',
-    simpleAcNote: 'Bleu pour froid, orange pour chaud, jaune pour deshumidification, violet pour auto. Le grand bouton STOP eteint l appareil.',
     mitsubishiTitle: 'Telecommande Mitsubishi',
     mitsubishiNote: 'Appuyez sur Operation pour demarrer ou arreter. Reglez avec mode, temperature et debit d air.',
     daikinTitle: 'Telecommande Daikin',
@@ -351,16 +332,14 @@ const S = {
   es: {
     intro: 'Compare con el control o panel real de la habitacion. Las instrucciones principales se muestran como guias rapidas.',
     acTitle: 'Como usar el aire acondicionado',
-    acIntro: 'Pulse COOL o HEAT para encender el aire acondicionado. Ajuste temperatura y ventilador con los botones indicados.',
+    acIntro: 'Pulse COOL o HEAT para encender el aire acondicionado. Use DRY para deshumidificar. Ajuste temperatura y ventilador con los botones indicados.',
     cool: 'FRIO',
     heat: 'CALOR',
+    dry: 'SECO',
     stop: 'PARAR',
     fan: 'VENTILADOR',
-    tempUp: 'SUBIR TEMP.',
-    tempDown: 'BAJAR TEMP.',
+    temp: 'TEMP.',
     acNote: 'Las viviendas japonesas normalmente no tienen calefaccion central. El aire acondicionado da frio y calor, pero puede tardar en ajustar la temperatura.',
-    simpleAcTitle: 'Control con botones de color',
-    simpleAcNote: 'Azul para frio, naranja para calor, amarillo para seco, morado para auto. El boton grande STOP apaga el equipo.',
     mitsubishiTitle: 'Control Mitsubishi',
     mitsubishiNote: 'Pulse Operation para iniciar o parar. Ajuste con modo, temperatura y ventilador.',
     daikinTitle: 'Control Daikin',

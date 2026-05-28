@@ -27,7 +27,65 @@
   .top-emoji { font-size: 1.8rem; }
   .content { padding: 18px 14px 40px; max-width: 760px; margin: 0 auto; }
   .guide-card { background: #fff; border-radius: 14px; margin-bottom: 18px; overflow: hidden; box-shadow: 0 4px 16px rgba(0,0,0,0.11); border: 1px solid rgba(255,255,255,0.8); }
-  .guide-card img { display: block; width: 100%; height: auto; background: #f8f4ef; }
+  .photo-frame {
+    position: relative;
+    min-height: 280px;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    padding: 18px;
+    background:
+      linear-gradient(135deg, rgba(46,125,69,0.12) 0 25%, transparent 25% 62%, rgba(46,125,69,0.10) 62% 100%),
+      linear-gradient(145deg, #f9fbf5, #eef7ef);
+  }
+  .photo-frame::after {
+    content: "";
+    position: absolute;
+    inset: 12px;
+    border: 1px solid rgba(46,125,69,0.16);
+    border-radius: 14px;
+    pointer-events: none;
+  }
+  .photo-frame img {
+    display: block;
+    width: calc(100% - 10px);
+    height: 300px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 18px;
+    box-shadow: 0 18px 28px rgba(0,0,0,0.18);
+    filter: saturate(1.05) contrast(1.02);
+  }
+  .photo-frame.contain img {
+    object-fit: contain;
+    width: min(86%, 420px);
+    height: auto;
+    max-height: 360px;
+    background: #fff;
+    filter: none;
+  }
+  .label-chip {
+    position: absolute;
+    z-index: 2;
+    background: var(--accent);
+    color: #fff;
+    border-radius: 999px;
+    padding: 6px 10px;
+    font-size: 0.74rem;
+    font-weight: 900;
+    line-height: 1;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    white-space: nowrap;
+  }
+  .chip-blue { background: #1976d2; }
+  .chip-yellow { background: #d99b19; }
+  .chip-gray { background: #4f5b62; }
+  .pos-tl { top: 20px; left: 18px; }
+  .pos-tr { top: 20px; right: 18px; }
+  .pos-ml { top: 50%; left: 16px; }
+  .pos-mr { top: 50%; right: 16px; }
+  .pos-bl { bottom: 20px; left: 18px; }
+  .pos-br { bottom: 20px; right: 18px; }
   .guide-body { padding: 15px 16px 17px; }
   .guide-title { color: var(--accent); font-size: 1.02rem; font-weight: 900; margin-bottom: 8px; }
   .guide-note { color: var(--text-mid); font-size: 0.92rem; font-weight: 800; line-height: 1.55; margin-bottom: 12px; }
@@ -44,7 +102,9 @@
   .back-footer a:hover { transform: scale(1.04); }
   @media (min-width: 720px) {
     .guide-card.wide { display: grid; grid-template-columns: minmax(280px, 1fr) 1fr; align-items: stretch; }
-    .guide-card.wide img { height: 100%; object-fit: cover; }
+    .guide-card.wide .photo-frame { min-height: 390px; }
+    .guide-card.wide .photo-frame img { height: 390px; }
+    .guide-card.wide .photo-frame.contain img { height: auto; max-height: 390px; }
   }
 </style>
 </head>
@@ -64,7 +124,13 @@
 </div>
 <main class="content">
   <section class="guide-card">
-    <img src="../assets/laundry-panel-1002.jpg" alt="Washing machine control panel" data-i18n-alt="panelAlt">
+    <div class="photo-frame">
+      <img src="../assets/laundry-panel-1002-crop.jpg" alt="Washing machine control panel" data-i18n-alt="panelAlt">
+      <span class="label-chip chip-blue pos-bl">WASH</span>
+      <span class="label-chip pos-ml">WASH & DRY</span>
+      <span class="label-chip chip-gray pos-mr">DRY</span>
+      <span class="label-chip pos-tr">START / STOP</span>
+    </div>
     <div class="guide-body">
       <h2 class="guide-title" data-i18n="panelTitle">Washing Machine Panel</h2>
       <p class="guide-note" data-i18n="panelNote">Use the large Start/Stop button on the right after choosing the mode.</p>
@@ -81,7 +147,11 @@
   </section>
 
   <section class="guide-card wide">
-    <img src="../assets/laundry-detergent-1002.jpg" alt="Laundry detergent and softener dispenser" data-i18n-alt="detergentAlt">
+    <div class="photo-frame contain">
+      <img src="../assets/laundry-detergent-1002-crop.jpg" alt="Laundry detergent and softener dispenser" data-i18n-alt="detergentAlt">
+      <span class="label-chip pos-tr">SOFTENER</span>
+      <span class="label-chip chip-yellow pos-bl">DETERGENT</span>
+    </div>
     <div class="guide-body">
       <h2 class="guide-title" data-i18n="detergentTitle">Detergent / Softener Dispenser</h2>
       <p class="guide-note" data-i18n="detergentNote">Put detergent and softener in the correct slots before starting the machine.</p>

@@ -27,7 +27,71 @@
   .top-emoji { font-size: 1.8rem; }
   .content { padding: 18px 14px 40px; max-width: 760px; margin: 0 auto; }
   .device-card { background: #fff; border-radius: 14px; margin-bottom: 18px; overflow: hidden; box-shadow: 0 4px 16px rgba(0,0,0,0.11); border: 1px solid rgba(255,255,255,0.8); }
-  .device-card img { display: block; width: 100%; height: auto; background: #f8f4ef; }
+  .photo-frame {
+    position: relative;
+    min-height: 330px;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    padding: 18px;
+    background:
+      linear-gradient(135deg, rgba(46,125,69,0.12) 0 24%, transparent 24% 62%, rgba(46,125,69,0.10) 62% 100%),
+      linear-gradient(145deg, #f9fbf5, #eef7ef);
+  }
+  .photo-frame::after {
+    content: "";
+    position: absolute;
+    inset: 12px;
+    border: 1px solid rgba(46,125,69,0.16);
+    border-radius: 14px;
+    pointer-events: none;
+  }
+  .photo-frame img {
+    display: block;
+    width: min(76%, 270px);
+    height: auto;
+    max-height: 390px;
+    object-fit: contain;
+    object-position: center;
+    border-radius: 18px;
+    box-shadow: 0 18px 28px rgba(0,0,0,0.18);
+    background: #fff;
+  }
+  .photo-frame.square img {
+    width: min(88%, 360px);
+    max-height: 350px;
+    object-fit: cover;
+  }
+  .photo-frame.panel img {
+    width: calc(100% - 14px);
+    height: 320px;
+    max-height: none;
+    object-fit: cover;
+  }
+  .label-chip {
+    position: absolute;
+    z-index: 2;
+    background: var(--accent);
+    color: #fff;
+    border-radius: 999px;
+    padding: 6px 10px;
+    font-size: 0.74rem;
+    font-weight: 900;
+    line-height: 1;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    white-space: nowrap;
+  }
+  .chip-blue { background: #1976d2; }
+  .chip-orange { background: #e66f2d; }
+  .chip-yellow { background: #d99b19; }
+  .chip-red { background: #c62828; }
+  .chip-gray { background: #4f5b62; }
+  .pos-tl { top: 20px; left: 18px; }
+  .pos-tr { top: 20px; right: 18px; }
+  .pos-ml { top: 48%; left: 16px; }
+  .pos-mr { top: 48%; right: 16px; }
+  .pos-bl { bottom: 20px; left: 18px; }
+  .pos-br { bottom: 20px; right: 18px; }
   .device-body { padding: 15px 16px 17px; }
   .device-title { color: var(--accent); font-size: 1.02rem; font-weight: 900; margin-bottom: 8px; }
   .device-note { color: var(--text-mid); font-size: 0.92rem; font-weight: 800; line-height: 1.55; margin-bottom: 12px; }
@@ -41,7 +105,9 @@
   .back-footer a:hover { transform: scale(1.04); }
   @media (min-width: 720px) {
     .device-card.wide { display: grid; grid-template-columns: minmax(260px, 0.9fr) 1.1fr; align-items: stretch; }
-    .device-card.wide img { height: 100%; object-fit: cover; }
+    .device-card.wide .photo-frame { min-height: 430px; }
+    .device-card.wide .photo-frame img { max-height: 430px; }
+    .device-card.wide .photo-frame.square img { max-height: 360px; }
   }
 </style>
 </head>
@@ -63,7 +129,11 @@
   <section class="tip-card" data-i18n="intro">Use the photos below to match the actual remote or panel in the room. The labels explain the main Japanese buttons.</section>
 
   <section class="device-card wide">
-    <img src="../assets/equipment-tv-remote-1002.jpg" alt="TV remote control" data-i18n-alt="tvAlt">
+    <div class="photo-frame">
+      <img src="../assets/equipment-tv-remote-1002-crop.jpg" alt="TV remote control" data-i18n-alt="tvAlt">
+      <span class="label-chip chip-red pos-tr">POWER</span>
+      <span class="label-chip chip-blue pos-bl">APPS</span>
+    </div>
     <div class="device-body">
       <h2 class="device-title" data-i18n="tvTitle">TV Remote</h2>
       <p class="device-note" data-i18n="tvNote">Use the red power button at the top. Netflix, YouTube, Hulu, ABEMA, and Live TV have dedicated buttons.</p>
@@ -77,7 +147,13 @@
   </section>
 
   <section class="device-card wide">
-    <img src="../assets/equipment-ac-daikin-1002.jpg" alt="Daikin air conditioner remote" data-i18n-alt="daikinAlt">
+    <div class="photo-frame">
+      <img src="../assets/equipment-ac-daikin-1002-crop.jpg" alt="Daikin air conditioner remote" data-i18n-alt="daikinAlt">
+      <span class="label-chip pos-tl">AUTO</span>
+      <span class="label-chip chip-blue pos-ml">COOL</span>
+      <span class="label-chip chip-orange pos-mr">HEAT</span>
+      <span class="label-chip chip-gray pos-br">STOP</span>
+    </div>
     <div class="device-body">
       <h2 class="device-title" data-i18n="daikinTitle">Air Conditioner Remote</h2>
       <p class="device-note" data-i18n="daikinNote">Choose AUTO, COOL, HEAT, DRY, or FAN, then adjust temperature and fan volume.</p>
@@ -95,7 +171,13 @@
   </section>
 
   <section class="device-card wide">
-    <img src="../assets/equipment-ac-simple-1002.jpg" alt="Air conditioner remote with colored buttons" data-i18n-alt="simpleAcAlt">
+    <div class="photo-frame">
+      <img src="../assets/equipment-ac-simple-1002-crop.jpg" alt="Air conditioner remote with colored buttons" data-i18n-alt="simpleAcAlt">
+      <span class="label-chip chip-orange pos-tl">HEAT</span>
+      <span class="label-chip chip-yellow pos-ml">DRY</span>
+      <span class="label-chip chip-blue pos-mr">COOL</span>
+      <span class="label-chip chip-gray pos-br">STOP</span>
+    </div>
     <div class="device-body">
       <h2 class="device-title" data-i18n="simpleAcTitle">Simple Air Conditioner Remote</h2>
       <p class="device-note" data-i18n="simpleAcNote">Use the colored buttons for HEAT, DRY, and COOL. Use the large STOP button to turn it off.</p>
@@ -111,7 +193,12 @@
   </section>
 
   <section class="device-card wide">
-    <img src="../assets/equipment-ac-mitsubishi-1002.jpg" alt="Mitsubishi air conditioner remote" data-i18n-alt="mitsubishiAlt">
+    <div class="photo-frame">
+      <img src="../assets/equipment-ac-mitsubishi-1002-crop.jpg" alt="Mitsubishi air conditioner remote" data-i18n-alt="mitsubishiAlt">
+      <span class="label-chip pos-tl">START</span>
+      <span class="label-chip chip-blue pos-ml">TEMP.</span>
+      <span class="label-chip chip-gray pos-br">FAN</span>
+    </div>
     <div class="device-body">
       <h2 class="device-title" data-i18n="mitsubishiTitle">Mitsubishi Air Conditioner Remote</h2>
       <p class="device-note" data-i18n="mitsubishiNote">Press operation to start, choose mode, then adjust temperature with the center buttons.</p>
@@ -126,7 +213,13 @@
   </section>
 
   <section class="device-card wide">
-    <img src="../assets/equipment-toilet-1002.jpg" alt="Toilet washlet control panel" data-i18n-alt="toiletAlt">
+    <div class="photo-frame panel">
+      <img src="../assets/equipment-toilet-1002.jpg" alt="Toilet washlet control panel" data-i18n-alt="toiletAlt">
+      <span class="label-chip chip-gray pos-tl">STOP</span>
+      <span class="label-chip pos-ml">REAR</span>
+      <span class="label-chip chip-blue pos-mr">BIDET</span>
+      <span class="label-chip chip-yellow pos-br">PRESSURE</span>
+    </div>
     <div class="device-body">
       <h2 class="device-title" data-i18n="toiletTitle">Toilet Washlet</h2>
       <p class="device-note" data-i18n="toiletNote">Use stop after using the spray. The plus and minus buttons adjust water pressure.</p>
@@ -141,7 +234,11 @@
   </section>
 
   <section class="device-card wide">
-    <img src="../assets/equipment-hot-water-1002.jpg" alt="Hot water controller" data-i18n-alt="hotWaterAlt">
+    <div class="photo-frame square">
+      <img src="../assets/equipment-hot-water-1002-crop.jpg" alt="Hot water controller" data-i18n-alt="hotWaterAlt">
+      <span class="label-chip pos-tl">TURN ON</span>
+      <span class="label-chip chip-orange pos-br">HOT WATER</span>
+    </div>
     <div class="device-body">
       <h2 class="device-title" data-i18n="hotWaterTitle">Hot Water</h2>
       <p class="device-note" data-i18n="hotWaterNote">Press the operation button to turn on hot water before using the bath or shower.</p>

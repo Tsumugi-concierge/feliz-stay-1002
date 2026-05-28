@@ -57,12 +57,19 @@
   .callout.m-left-sleep { left: 0; top: 58%; width: 40%; }
   .callout.m-right-operation { right: 0; top: 35%; width: 41%; }
   .callout.m-right-fan { right: 0; top: 49%; width: 41%; }
+  .remote-diagram.tv img { width: min(42%, 220px); }
+  .callout.tv-left-power { left: 0; top: 5%; width: 41%; }
+  .callout.tv-left-volume { left: 0; top: 46%; width: 41%; }
+  .callout.tv-left-apps { left: 0; top: 66%; width: 41%; }
+  .callout.tv-right-home { right: 0; top: 38%; width: 41%; }
+  .callout.tv-right-live { right: 0; top: 73%; width: 41%; }
+  .remote-diagram.washlet img { width: min(50%, 250px); }
+  .callout.w-left-stop { left: 0; top: 48%; width: 39%; }
+  .callout.w-left-rear { left: 0; top: 56%; width: 39%; }
+  .callout.w-left-bidet { left: 0; top: 64%; width: 39%; }
+  .callout.w-right-pressure { right: 0; top: 55%; width: 40%; }
+  .callout.w-right-power { right: 0; top: 23%; width: 40%; }
   .bottom-note { margin-top: 0; padding: 14px 18px; background: var(--rose); color: #fff; font-family: 'Nunito', sans-serif; font-weight: 900; line-height: 1.45; font-size: 0.98rem; }
-  .quick-grid { display: grid; gap: 12px; margin-top: 18px; }
-  .quick-card { background: #fff; border-radius: 12px; padding: 14px; box-shadow: 0 2px 12px rgba(120,80,60,0.08); border-top: 4px solid var(--accent); }
-  .quick-card h2 { color: var(--accent); font-size: 1rem; font-weight: 900; margin-bottom: 7px; }
-  .quick-card p { color: var(--muted); font-size: 0.9rem; font-weight: 800; line-height: 1.55; }
-  .quick-card img { width: 100%; max-height: 250px; object-fit: contain; border-radius: 10px; background: #f8f4ef; margin-bottom: 10px; }
   .hot-water-layout { display: grid; grid-template-columns: minmax(145px, 0.75fr) 1fr; gap: 14px; align-items: center; }
   .hot-water-layout img { width: 100%; max-height: 310px; object-fit: contain; filter: drop-shadow(0 10px 16px rgba(0,0,0,0.18)); }
   .step-list { list-style: none; display: grid; gap: 8px; }
@@ -71,16 +78,15 @@
   .back-footer { text-align: center; margin-top: 28px; padding-bottom: 20px; }
   .back-footer a { display: inline-flex; align-items: center; gap: 8px; background: var(--accent); color: #fff; text-decoration: none; padding: 12px 28px; border-radius: 50px; font-weight: 800; font-size: 0.9rem; box-shadow: 0 4px 12px rgba(0,0,0,0.2); transition: transform 0.2s; }
   .back-footer a:hover { transform: scale(1.04); }
-  @media (min-width: 720px) {
-    .quick-grid { grid-template-columns: repeat(2, 1fr); }
-  }
   @media (max-width: 560px) {
     .content { padding-left: 12px; padding-right: 12px; }
     .use-title { font-size: 1.45rem; padding-top: 20px; }
     .white-board { margin: 0 12px; padding: 14px 10px 0; }
     .instruction { font-size: 0.88rem; }
     .remote-diagram { min-height: 455px; }
-    .remote-diagram img { width: min(46%, 170px); max-height: 420px; }
+    .remote-diagram img,
+    .remote-diagram.tv img,
+    .remote-diagram.washlet img { width: min(46%, 170px); max-height: 420px; }
     .callout { gap: 7px; }
     .callout::after { min-width: 34px; }
     .bottom-note { font-size: 0.9rem; }
@@ -170,17 +176,36 @@
     <div class="bottom-note" data-i18n="hotNote">If there is no hot water, check that this controller is on before contacting support.</div>
   </section>
 
-  <section class="quick-grid">
-    <article class="quick-card">
-      <img src="../assets/equipment-tv-remote-1002-crop.jpg" alt="TV remote control" data-i18n-alt="tvAlt">
-      <h2 data-i18n="tvTitle">TV</h2>
-      <p data-i18n="tvNote">Use the red power button at the top. Netflix, YouTube, Hulu, ABEMA, and Live TV have dedicated buttons.</p>
-    </article>
-    <article class="quick-card">
-      <img src="../assets/equipment-toilet-1002.jpg" alt="Toilet washlet control panel" data-i18n-alt="toiletAlt">
-      <h2 data-i18n="toiletTitle">Toilet Washlet</h2>
-      <p data-i18n="toiletNote">Press REAR or BIDET to activate the spray. Press STOP after use. The plus and minus buttons adjust water pressure.</p>
-    </article>
+  <section class="use-card">
+    <h1 class="use-title" data-i18n="tvTitle">How to use TV</h1>
+    <div class="white-board">
+      <p class="instruction" data-i18n="tvIntro">Use the red power button at the top. The app buttons are near the bottom of the remote.</p>
+      <div class="remote-diagram tv">
+        <img src="../assets/equipment-tv-remote-1002-crop.jpg" alt="TV remote control" data-i18n-alt="tvAlt">
+        <div class="callout tv-left-power"><span data-i18n="power">POWER</span></div>
+        <div class="callout tv-left-volume"><span data-i18n="volume">VOLUME</span></div>
+        <div class="callout tv-left-apps"><span data-i18n="apps">APPS</span></div>
+        <div class="callout right tv-right-home"><span data-i18n="home">HOME</span></div>
+        <div class="callout right tv-right-live"><span data-i18n="liveTv">LIVE TV</span></div>
+      </div>
+    </div>
+    <div class="bottom-note" data-i18n="tvNote">Netflix, YouTube, Hulu, ABEMA, and Live TV have dedicated buttons. Use HOME if you need to return to the main screen.</div>
+  </section>
+
+  <section class="use-card">
+    <h1 class="use-title" data-i18n="toiletTitle">How to use Toilet Washlet</h1>
+    <div class="white-board">
+      <p class="instruction" data-i18n="toiletIntro">Press REAR or BIDET to activate the spray. Press STOP after use.</p>
+      <div class="remote-diagram washlet">
+        <img src="../assets/equipment-toilet-1002.jpg" alt="Toilet washlet control panel" data-i18n-alt="toiletAlt">
+        <div class="callout w-left-stop"><span data-i18n="stop">STOP</span></div>
+        <div class="callout w-left-rear"><span data-i18n="rear">REAR</span></div>
+        <div class="callout w-left-bidet"><span data-i18n="bidet">BIDET</span></div>
+        <div class="callout right w-right-power"><span data-i18n="power">POWER</span></div>
+        <div class="callout right w-right-pressure"><span data-i18n="waterPressure">PRESSURE</span></div>
+      </div>
+    </div>
+    <div class="bottom-note" data-i18n="toiletNote">Use the plus and minus buttons to adjust water pressure. If unsure, press STOP first.</div>
   </section>
 
   <div class="back-footer">
@@ -204,6 +229,14 @@ const S = {
     mode: 'MODE',
     sleep: 'SLEEP',
     operation: 'START / STOP',
+    power: 'POWER',
+    volume: 'VOLUME',
+    apps: 'APPS',
+    home: 'HOME',
+    liveTv: 'LIVE TV',
+    rear: 'REAR',
+    bidet: 'BIDET',
+    waterPressure: 'PRESSURE',
     acNote: 'Note: Japanese homes typically do not have central heating systems. Air conditioners provide both cooling and heating but may take some time to fully adjust the room temperature.',
     mitsubishiTitle: 'How to use A/C - Mitsubishi Remote',
     mitsubishiIntro: 'Use Operation to start or stop. Use Mode, Temperature, and Air Volume to adjust comfort.',
@@ -216,10 +249,12 @@ const S = {
     hotStep2: 'Use it before taking a bath or shower.',
     hotStep3: 'Turn it off when you are finished.',
     hotNote: 'If there is no hot water, check that this controller is on before contacting support.',
-    tvTitle: 'TV',
-    tvNote: 'Use the red power button at the top. Netflix, YouTube, Hulu, ABEMA, and Live TV have dedicated buttons.',
-    toiletTitle: 'Toilet Washlet',
-    toiletNote: 'Press REAR or BIDET to activate the spray. Press STOP after use. The plus and minus buttons adjust water pressure.',
+    tvTitle: 'How to use TV',
+    tvIntro: 'Use the red power button at the top. The app buttons are near the bottom of the remote.',
+    tvNote: 'Netflix, YouTube, Hulu, ABEMA, and Live TV have dedicated buttons. Use HOME if you need to return to the main screen.',
+    toiletTitle: 'How to use Toilet Washlet',
+    toiletIntro: 'Press REAR or BIDET to activate the spray. Press STOP after use.',
+    toiletNote: 'Use the plus and minus buttons to adjust water pressure. If unsure, press STOP first.',
     daikinAlt: 'Daikin air conditioner remote',
     simpleAcAlt: 'Air conditioner remote with colored buttons',
     mitsubishiAlt: 'Mitsubishi air conditioner remote',
@@ -242,6 +277,14 @@ const S = {
     mode: '運転切換',
     sleep: 'おやすみ',
     operation: '運転 / 停止',
+    power: '電源',
+    volume: '音量',
+    apps: 'アプリ',
+    home: 'ホーム',
+    liveTv: 'ライブTV',
+    rear: 'おしり',
+    bidet: 'ビデ',
+    waterPressure: '水勢',
     acNote: '日本の住宅は中央暖房ではないことが一般的です。エアコンで冷房・暖房の両方を行いますが、室温が整うまで少し時間がかかる場合があります。',
     mitsubishiTitle: 'エアコンの使い方（三菱リモコン）',
     mitsubishiIntro: '運転/停止で開始・停止します。運転切換、温度、風量で調整してください。',
@@ -254,10 +297,12 @@ const S = {
     hotStep2: 'お風呂やシャワーを使う前にオンにしてください。',
     hotStep3: '使い終わったらオフにしてください。',
     hotNote: 'お湯が出ない場合は、サポートへ連絡する前にこのコントローラーがオンになっているか確認してください。',
-    tvTitle: 'テレビ',
-    tvNote: '上部の赤い電源ボタンでオン/オフできます。Netflix、YouTube、Hulu、ABEMA、Live TV は専用ボタンがあります。',
-    toiletTitle: 'ウォシュレット',
-    toiletNote: 'おしりまたはビデで洗浄できます。使用後は停止を押してください。+/- で水勢を調整できます。',
+    tvTitle: 'テレビの使い方',
+    tvIntro: '上部の赤い電源ボタンでオン/オフできます。アプリボタンはリモコン下部にあります。',
+    tvNote: 'Netflix、YouTube、Hulu、ABEMA、Live TV は専用ボタンがあります。メイン画面へ戻る場合はホームを押してください。',
+    toiletTitle: 'ウォシュレットの使い方',
+    toiletIntro: 'おしりまたはビデで洗浄できます。使用後は停止を押してください。',
+    toiletNote: '+/- ボタンで水勢を調整できます。迷った場合は、まず停止を押してください。',
     daikinAlt: 'ダイキンのエアコンリモコン',
     simpleAcAlt: '色付きボタンのエアコンリモコン',
     mitsubishiAlt: '三菱エアコンリモコン',
@@ -280,6 +325,14 @@ const S = {
     mode: '模式',
     sleep: '睡眠',
     operation: '运转 / 停止',
+    power: '电源',
+    volume: '音量',
+    apps: '应用',
+    home: '主页',
+    liveTv: '直播电视',
+    rear: '臀部清洗',
+    bidet: '妇洗',
+    waterPressure: '水压',
     acNote: '日本住宅通常没有中央供暖。空调可制冷和制热，但调节室温可能需要一些时间。',
     mitsubishiTitle: '空调使用方法 - 三菱遥控器',
     mitsubishiIntro: '用运转/停止开始或停止。使用模式、温度和风量调节。',
@@ -292,10 +345,12 @@ const S = {
     hotStep2: '洗澡或淋浴前请先打开。',
     hotStep3: '使用结束后请关闭。',
     hotNote: '如果没有热水，请先确认此控制器已打开，再联系支持。',
-    tvTitle: '电视',
-    tvNote: '顶部红色按钮是电源。Netflix、YouTube、Hulu、ABEMA 和 Live TV 有专用按钮。',
-    toiletTitle: '温水马桶',
-    toiletNote: '按 REAR 或 BIDET 使用清洗功能。使用后请按 STOP。+/- 按钮可调节水压。',
+    tvTitle: '电视使用方法',
+    tvIntro: '顶部红色按钮是电源。应用按钮在遥控器下方。',
+    tvNote: 'Netflix、YouTube、Hulu、ABEMA 和 Live TV 有专用按钮。需要返回主屏幕时请按主页。',
+    toiletTitle: '温水马桶使用方法',
+    toiletIntro: '按 REAR 或 BIDET 使用清洗功能。使用后请按 STOP。',
+    toiletNote: '用 +/- 按钮调节水压。不确定时请先按 STOP。',
     daikinAlt: '大金空调遥控器',
     simpleAcAlt: '带彩色按钮的空调遥控器',
     mitsubishiAlt: '三菱空调遥控器',
@@ -318,6 +373,14 @@ const S = {
     mode: '운전 전환',
     sleep: '취침',
     operation: '운전 / 정지',
+    power: '전원',
+    volume: '음량',
+    apps: '앱',
+    home: '홈',
+    liveTv: '라이브 TV',
+    rear: '세정',
+    bidet: '비데',
+    waterPressure: '수압',
     acNote: '일본 주택에는 보통 중앙 난방이 없습니다. 에어컨으로 냉방과 난방을 모두 하지만 실내 온도가 맞춰지기까지 시간이 걸릴 수 있습니다.',
     mitsubishiTitle: '에어컨 사용 방법 - 미쓰비시 리모컨',
     mitsubishiIntro: '운전/정지로 시작하거나 멈춥니다. 운전 전환, 온도, 풍량으로 조절하세요.',
@@ -330,10 +393,12 @@ const S = {
     hotStep2: '목욕이나 샤워 전에 켜 주세요.',
     hotStep3: '사용 후에는 꺼 주세요.',
     hotNote: '온수가 나오지 않으면 문의 전에 이 컨트롤러가 켜져 있는지 확인해 주세요.',
-    tvTitle: 'TV',
-    tvNote: '상단의 빨간 전원 버튼으로 켜고 끌 수 있습니다. Netflix, YouTube, Hulu, ABEMA, Live TV 전용 버튼이 있습니다.',
-    toiletTitle: '비데',
-    toiletNote: 'REAR 또는 BIDET 버튼으로 세정 기능을 사용합니다. 사용 후 STOP을 눌러 주세요. +/- 버튼으로 수압을 조절할 수 있습니다.',
+    tvTitle: 'TV 사용 방법',
+    tvIntro: '상단의 빨간 전원 버튼으로 켜고 끌 수 있습니다. 앱 버튼은 리모컨 아래쪽에 있습니다.',
+    tvNote: 'Netflix, YouTube, Hulu, ABEMA, Live TV 전용 버튼이 있습니다. 메인 화면으로 돌아가려면 홈을 누르세요.',
+    toiletTitle: '비데 사용 방법',
+    toiletIntro: 'REAR 또는 BIDET 버튼으로 세정 기능을 사용합니다. 사용 후 STOP을 눌러 주세요.',
+    toiletNote: '+/- 버튼으로 수압을 조절할 수 있습니다. 잘 모르겠으면 먼저 STOP을 눌러 주세요.',
     daikinAlt: '다이킨 에어컨 리모컨',
     simpleAcAlt: '색상 버튼이 있는 에어컨 리모컨',
     mitsubishiAlt: '미쓰비시 에어컨 리모컨',
@@ -356,6 +421,14 @@ const S = {
     mode: 'MODE',
     sleep: 'NUIT',
     operation: 'MARCHE / ARRET',
+    power: 'MARCHE',
+    volume: 'VOLUME',
+    apps: 'APPLIS',
+    home: 'ACCUEIL',
+    liveTv: 'TV EN DIRECT',
+    rear: 'ARRIERE',
+    bidet: 'BIDET',
+    waterPressure: 'PRESSION',
     acNote: 'Les logements japonais n ont generalement pas de chauffage central. La climatisation assure le froid et le chaud, mais la temperature peut prendre du temps a s ajuster.',
     mitsubishiTitle: 'Utiliser la climatisation - Mitsubishi',
     mitsubishiIntro: 'Utilisez marche/arret pour demarrer ou arreter. Reglez avec mode, temperature et debit d air.',
@@ -368,10 +441,12 @@ const S = {
     hotStep2: 'Allumez avant le bain ou la douche.',
     hotStep3: 'Eteignez apres utilisation.',
     hotNote: 'S il n y a pas d eau chaude, verifiez que ce controleur est allume avant de contacter le support.',
-    tvTitle: 'TV',
-    tvNote: 'Utilisez le bouton rouge en haut pour allumer ou eteindre. Netflix, YouTube, Hulu, ABEMA et Live TV ont des boutons dedies.',
-    toiletTitle: 'Toilette lavante',
-    toiletNote: 'Appuyez sur REAR ou BIDET pour le jet. Appuyez sur STOP apres utilisation. Les boutons +/- reglent la pression.',
+    tvTitle: 'Utiliser la TV',
+    tvIntro: 'Utilisez le bouton rouge en haut pour allumer ou eteindre. Les boutons d applications sont en bas de la telecommande.',
+    tvNote: 'Netflix, YouTube, Hulu, ABEMA et Live TV ont des boutons dedies. Utilisez Accueil pour revenir a l ecran principal.',
+    toiletTitle: 'Utiliser la toilette lavante',
+    toiletIntro: 'Appuyez sur REAR ou BIDET pour le jet. Appuyez sur STOP apres utilisation.',
+    toiletNote: 'Les boutons +/- reglent la pression de l eau. En cas de doute, appuyez d abord sur STOP.',
     daikinAlt: 'Telecommande de climatisation Daikin',
     simpleAcAlt: 'Telecommande de climatisation avec boutons colores',
     mitsubishiAlt: 'Telecommande de climatisation Mitsubishi',
@@ -394,6 +469,14 @@ const S = {
     mode: 'MODO',
     sleep: 'SUENO',
     operation: 'ENCENDER / PARAR',
+    power: 'ENCENDER',
+    volume: 'VOLUMEN',
+    apps: 'APPS',
+    home: 'INICIO',
+    liveTv: 'TV EN VIVO',
+    rear: 'TRASERO',
+    bidet: 'BIDET',
+    waterPressure: 'PRESION',
     acNote: 'Las viviendas japonesas normalmente no tienen calefaccion central. El aire acondicionado da frio y calor, pero puede tardar en ajustar la temperatura.',
     mitsubishiTitle: 'Como usar el aire acondicionado - Mitsubishi',
     mitsubishiIntro: 'Use encender/parar para iniciar o detener. Ajuste con modo, temperatura y ventilador.',
@@ -406,10 +489,12 @@ const S = {
     hotStep2: 'Enciendalo antes de banarse o ducharse.',
     hotStep3: 'Apaguelo al terminar.',
     hotNote: 'Si no hay agua caliente, compruebe que este controlador este encendido antes de contactar soporte.',
-    tvTitle: 'TV',
-    tvNote: 'Use el boton rojo superior para encender o apagar. Netflix, YouTube, Hulu, ABEMA y Live TV tienen botones dedicados.',
-    toiletTitle: 'Inodoro con bidet',
-    toiletNote: 'Pulse REAR o BIDET para activar el spray. Pulse STOP despues de usar. Los botones +/- ajustan la presion.',
+    tvTitle: 'Como usar la TV',
+    tvIntro: 'Use el boton rojo superior para encender o apagar. Los botones de apps estan cerca de la parte inferior.',
+    tvNote: 'Netflix, YouTube, Hulu, ABEMA y Live TV tienen botones dedicados. Use Inicio para volver a la pantalla principal.',
+    toiletTitle: 'Como usar el inodoro con bidet',
+    toiletIntro: 'Pulse REAR o BIDET para activar el spray. Pulse STOP despues de usar.',
+    toiletNote: 'Use los botones +/- para ajustar la presion del agua. Si tiene dudas, pulse STOP primero.',
     daikinAlt: 'Control Daikin de aire acondicionado',
     simpleAcAlt: 'Control de aire acondicionado con botones de color',
     mitsubishiAlt: 'Control Mitsubishi de aire acondicionado',

@@ -40,17 +40,24 @@
   .callout { position: absolute; z-index: 2; display: flex; align-items: center; gap: 10px; color: var(--rose); font-family: 'Nunito', sans-serif; font-weight: 900; font-size: clamp(0.78rem, 2.7vw, 1.08rem); line-height: 1; text-transform: uppercase; white-space: nowrap; }
   .callout::after { content: ""; height: 2px; background: #6d6670; flex: 1; min-width: 44px; }
   .callout.right { flex-direction: row-reverse; }
-  .callout.left-heat { left: 0; top: 33%; width: 41%; }
-  .callout.left-temp { left: 0; top: 57%; width: 40%; }
-  .callout.right-cool { right: 0; top: 33%; width: 41%; }
-  .callout.right-stop { right: 0; top: 40%; width: 40%; }
-  .callout.right-fan { right: 0; top: 50%; width: 41%; }
+  .callout.s-left-heat { left: 0; top: 33%; width: 41%; }
+  .callout.s-left-temp { left: 0; top: 57%; width: 40%; }
+  .callout.s-right-cool { right: 0; top: 33%; width: 41%; }
+  .callout.s-right-stop { right: 0; top: 40%; width: 40%; }
+  .callout.s-right-fan { right: 0; top: 50%; width: 41%; }
+  .callout.d-left-auto { left: 0; top: 29%; width: 41%; }
+  .callout.d-left-cool { left: 0; top: 36%; width: 41%; }
+  .callout.d-left-heat { left: 0; top: 43%; width: 41%; }
+  .callout.d-left-temp { left: 0; top: 55%; width: 40%; }
+  .callout.d-right-stop { right: 0; top: 29%; width: 40%; }
+  .callout.d-right-dry { right: 0; top: 36%; width: 40%; }
+  .callout.d-right-fan { right: 0; top: 43%; width: 40%; }
+  .callout.m-left-mode { left: 0; top: 35%; width: 40%; }
+  .callout.m-left-temp { left: 0; top: 49%; width: 40%; }
+  .callout.m-left-sleep { left: 0; top: 58%; width: 40%; }
+  .callout.m-right-operation { right: 0; top: 35%; width: 41%; }
+  .callout.m-right-fan { right: 0; top: 49%; width: 41%; }
   .bottom-note { margin-top: 0; padding: 14px 18px; background: var(--rose); color: #fff; font-family: 'Nunito', sans-serif; font-weight: 900; line-height: 1.45; font-size: 0.98rem; }
-  .remote-options { display: grid; gap: 12px; padding: 14px; background: #fff; }
-  .remote-option { display: grid; grid-template-columns: 112px 1fr; gap: 12px; align-items: center; background: #fbfaf7; border: 1px solid rgba(58,148,87,0.18); border-radius: 10px; padding: 10px; }
-  .remote-option img { width: 100%; max-height: 170px; object-fit: contain; border-radius: 8px; background: #fff; box-shadow: 0 6px 14px rgba(0,0,0,0.12); }
-  .remote-option h3 { color: var(--accent); font-size: 0.98rem; font-weight: 900; margin-bottom: 6px; }
-  .remote-option p { color: var(--muted); font-size: 0.88rem; line-height: 1.48; font-weight: 800; }
   .quick-grid { display: grid; gap: 12px; margin-top: 18px; }
   .quick-card { background: #fff; border-radius: 12px; padding: 14px; box-shadow: 0 2px 12px rgba(120,80,60,0.08); border-top: 4px solid var(--accent); }
   .quick-card h2 { color: var(--accent); font-size: 1rem; font-weight: 900; margin-bottom: 7px; }
@@ -66,8 +73,6 @@
   .back-footer a:hover { transform: scale(1.04); }
   @media (min-width: 720px) {
     .quick-grid { grid-template-columns: repeat(2, 1fr); }
-    .remote-options { grid-template-columns: repeat(2, 1fr); }
-    .remote-option.featured { grid-column: 1 / -1; }
   }
   @media (max-width: 560px) {
     .content { padding-left: 12px; padding-right: 12px; }
@@ -79,7 +84,6 @@
     .callout { gap: 7px; }
     .callout::after { min-width: 34px; }
     .bottom-note { font-size: 0.9rem; }
-    .remote-option { grid-template-columns: 88px 1fr; }
     .hot-water-layout { grid-template-columns: 1fr; }
   }
 </style>
@@ -105,33 +109,50 @@
     <h1 class="use-title" data-i18n="acTitle">How to use A/C</h1>
     <div class="white-board">
       <p class="instruction" data-i18n="acIntro">Press COOL or HEAT to turn on A/C. Adjust temperature and fan volume with the buttons shown below.</p>
-      <div class="remote-diagram">
+      <div class="remote-diagram simple">
         <img src="../assets/equipment-ac-simple-1002-crop.jpg" alt="Air conditioner remote with colored buttons" data-i18n-alt="simpleAcAlt">
-        <div class="callout left-heat"><span data-i18n="heat">HEAT</span></div>
-        <div class="callout left-temp"><span data-i18n="temp">TEMP.</span></div>
-        <div class="callout right right-cool"><span data-i18n="cool">COOL</span></div>
-        <div class="callout right right-stop"><span data-i18n="stop">STOP</span></div>
-        <div class="callout right right-fan"><span data-i18n="fan">AIR VOLUME</span></div>
+        <div class="callout s-left-heat"><span data-i18n="heat">HEAT</span></div>
+        <div class="callout s-left-temp"><span data-i18n="temp">TEMP.</span></div>
+        <div class="callout right s-right-cool"><span data-i18n="cool">COOL</span></div>
+        <div class="callout right s-right-stop"><span data-i18n="stop">STOP</span></div>
+        <div class="callout right s-right-fan"><span data-i18n="fan">AIR VOLUME</span></div>
       </div>
     </div>
     <div class="bottom-note" data-i18n="acNote">Note: Japanese homes typically do not have central heating systems. Air conditioners provide both cooling and heating but may take some time to fully adjust the room temperature.</div>
   </section>
 
-  <section class="remote-options" aria-label="Other air conditioner remotes">
-    <article class="remote-option">
-      <img src="../assets/equipment-ac-mitsubishi-1002-crop.jpg" alt="Mitsubishi air conditioner remote" data-i18n-alt="mitsubishiAlt">
-      <div>
-        <h3 data-i18n="mitsubishiTitle">Mitsubishi remote</h3>
-        <p data-i18n="mitsubishiNote">Press Operation to start or stop. Use Mode Change, Temperature, and Fan Volume to adjust comfort.</p>
+  <section class="use-card">
+    <h1 class="use-title" data-i18n="daikinTitle">How to use A/C - Daikin Remote</h1>
+    <div class="white-board">
+      <p class="instruction" data-i18n="daikinIntro">Choose AUTO, COOL, HEAT, DRY, or FAN, then adjust temperature and fan volume.</p>
+      <div class="remote-diagram daikin">
+        <img src="../assets/equipment-ac-daikin-1002-crop.jpg" alt="Daikin air conditioner remote" data-i18n-alt="daikinAlt">
+        <div class="callout d-left-auto"><span data-i18n="auto">AUTO</span></div>
+        <div class="callout d-left-cool"><span data-i18n="cool">COOL</span></div>
+        <div class="callout d-left-heat"><span data-i18n="heat">HEAT</span></div>
+        <div class="callout d-left-temp"><span data-i18n="temp">TEMP.</span></div>
+        <div class="callout right d-right-stop"><span data-i18n="stop">STOP</span></div>
+        <div class="callout right d-right-dry"><span data-i18n="dry">DRY</span></div>
+        <div class="callout right d-right-fan"><span data-i18n="fan">AIR VOLUME</span></div>
       </div>
-    </article>
-    <article class="remote-option">
-      <img src="../assets/equipment-ac-daikin-1002-crop.jpg" alt="Daikin air conditioner remote" data-i18n-alt="daikinAlt">
-      <div>
-        <h3 data-i18n="daikinTitle">Daikin remote</h3>
-        <p data-i18n="daikinNote">Choose AUTO, COOL, HEAT, DRY, or FAN, then adjust temperature and fan volume.</p>
+    </div>
+    <div class="bottom-note" data-i18n="daikinNote">Tip: If the display is hard to read, press the desired mode button first, then adjust the temperature gradually.</div>
+  </section>
+
+  <section class="use-card">
+    <h1 class="use-title" data-i18n="mitsubishiTitle">How to use A/C - Mitsubishi Remote</h1>
+    <div class="white-board">
+      <p class="instruction" data-i18n="mitsubishiIntro">Use Operation to start or stop. Use Mode, Temperature, and Air Volume to adjust comfort.</p>
+      <div class="remote-diagram mitsubishi">
+        <img src="../assets/equipment-ac-mitsubishi-1002-crop.jpg" alt="Mitsubishi air conditioner remote" data-i18n-alt="mitsubishiAlt">
+        <div class="callout m-left-mode"><span data-i18n="mode">MODE</span></div>
+        <div class="callout m-left-temp"><span data-i18n="temp">TEMP.</span></div>
+        <div class="callout m-left-sleep"><span data-i18n="sleep">SLEEP</span></div>
+        <div class="callout right m-right-operation"><span data-i18n="operation">START / STOP</span></div>
+        <div class="callout right m-right-fan"><span data-i18n="fan">AIR VOLUME</span></div>
       </div>
-    </article>
+    </div>
+    <div class="bottom-note" data-i18n="mitsubishiNote">Tip: Select the operating mode first, then set temperature and fan volume.</div>
   </section>
 
   <section class="use-card alt">
@@ -179,11 +200,17 @@ const S = {
     stop: 'STOP',
     fan: 'AIR VOLUME',
     temp: 'TEMP.',
+    auto: 'AUTO',
+    mode: 'MODE',
+    sleep: 'SLEEP',
+    operation: 'START / STOP',
     acNote: 'Note: Japanese homes typically do not have central heating systems. Air conditioners provide both cooling and heating but may take some time to fully adjust the room temperature.',
-    mitsubishiTitle: 'Mitsubishi remote',
-    mitsubishiNote: 'Press Operation to start or stop. Use Mode Change, Temperature, and Fan Volume to adjust comfort.',
-    daikinTitle: 'Daikin remote',
-    daikinNote: 'Choose AUTO, COOL, HEAT, DRY, or FAN, then adjust temperature and fan volume.',
+    mitsubishiTitle: 'How to use A/C - Mitsubishi Remote',
+    mitsubishiIntro: 'Use Operation to start or stop. Use Mode, Temperature, and Air Volume to adjust comfort.',
+    mitsubishiNote: 'Tip: Select the operating mode first, then set temperature and fan volume.',
+    daikinTitle: 'How to use A/C - Daikin Remote',
+    daikinIntro: 'Choose AUTO, COOL, HEAT, DRY, or FAN, then adjust temperature and fan volume.',
+    daikinNote: 'Tip: If the display is hard to read, press the desired mode button first, then adjust the temperature gradually.',
     hotWaterTitle: 'How to use Hot Water',
     hotStep1: 'Press the operation button to turn on hot water.',
     hotStep2: 'Use it before taking a bath or shower.',
@@ -211,11 +238,17 @@ const S = {
     stop: '停止',
     fan: '風量',
     temp: '温度',
+    auto: '自動',
+    mode: '運転切換',
+    sleep: 'おやすみ',
+    operation: '運転 / 停止',
     acNote: '日本の住宅は中央暖房ではないことが一般的です。エアコンで冷房・暖房の両方を行いますが、室温が整うまで少し時間がかかる場合があります。',
-    mitsubishiTitle: '三菱リモコン',
-    mitsubishiNote: '運転で開始・停止します。運転切換、温度、風量で調整してください。',
-    daikinTitle: 'ダイキンリモコン',
-    daikinNote: '自動・冷房・暖房・ドライ・送風を選び、温度と風量を調整します。',
+    mitsubishiTitle: 'エアコンの使い方（三菱リモコン）',
+    mitsubishiIntro: '運転/停止で開始・停止します。運転切換、温度、風量で調整してください。',
+    mitsubishiNote: 'ポイント：先に運転モードを選んでから、温度と風量を調整してください。',
+    daikinTitle: 'エアコンの使い方（ダイキンリモコン）',
+    daikinIntro: '自動・冷房・暖房・ドライ・送風を選び、温度と風量を調整します。',
+    daikinNote: 'ポイント：表示が見にくい場合は、先に使いたいモードのボタンを押してから温度を少しずつ調整してください。',
     hotWaterTitle: '給湯の使い方',
     hotStep1: '運転ボタンを押して給湯をオンにします。',
     hotStep2: 'お風呂やシャワーを使う前にオンにしてください。',
@@ -243,11 +276,17 @@ const S = {
     stop: '停止',
     fan: '风量',
     temp: '温度',
+    auto: '自动',
+    mode: '模式',
+    sleep: '睡眠',
+    operation: '运转 / 停止',
     acNote: '日本住宅通常没有中央供暖。空调可制冷和制热，但调节室温可能需要一些时间。',
-    mitsubishiTitle: '三菱遥控器',
-    mitsubishiNote: '按运转开始或停止。使用模式切换、温度和风量调节。',
-    daikinTitle: '大金遥控器',
-    daikinNote: '选择自动、制冷、制热、除湿或送风后，调节温度和风量。',
+    mitsubishiTitle: '空调使用方法 - 三菱遥控器',
+    mitsubishiIntro: '用运转/停止开始或停止。使用模式、温度和风量调节。',
+    mitsubishiNote: '提示：先选择运行模式，然后调节温度和风量。',
+    daikinTitle: '空调使用方法 - 大金遥控器',
+    daikinIntro: '选择自动、制冷、制热、除湿或送风后，调节温度和风量。',
+    daikinNote: '提示：如果显示屏不清楚，请先按需要的模式按钮，再逐步调节温度。',
     hotWaterTitle: '热水使用方法',
     hotStep1: '按运转按钮打开热水。',
     hotStep2: '洗澡或淋浴前请先打开。',
@@ -275,11 +314,17 @@ const S = {
     stop: '정지',
     fan: '풍량',
     temp: '온도',
+    auto: '자동',
+    mode: '운전 전환',
+    sleep: '취침',
+    operation: '운전 / 정지',
     acNote: '일본 주택에는 보통 중앙 난방이 없습니다. 에어컨으로 냉방과 난방을 모두 하지만 실내 온도가 맞춰지기까지 시간이 걸릴 수 있습니다.',
-    mitsubishiTitle: '미쓰비시 리모컨',
-    mitsubishiNote: '운전 버튼으로 시작 또는 정지합니다. 운전 전환, 온도, 풍량으로 조절하세요.',
-    daikinTitle: '다이킨 리모컨',
-    daikinNote: '자동, 냉방, 난방, 제습, 송풍을 선택한 뒤 온도와 풍량을 조절합니다.',
+    mitsubishiTitle: '에어컨 사용 방법 - 미쓰비시 리모컨',
+    mitsubishiIntro: '운전/정지로 시작하거나 멈춥니다. 운전 전환, 온도, 풍량으로 조절하세요.',
+    mitsubishiNote: '팁: 먼저 운전 모드를 선택한 뒤 온도와 풍량을 조절하세요.',
+    daikinTitle: '에어컨 사용 방법 - 다이킨 리모컨',
+    daikinIntro: '자동, 냉방, 난방, 제습, 송풍을 선택한 뒤 온도와 풍량을 조절합니다.',
+    daikinNote: '팁: 화면이 잘 보이지 않으면 원하는 모드 버튼을 먼저 누른 뒤 온도를 조금씩 조절하세요.',
     hotWaterTitle: '온수 사용 방법',
     hotStep1: '운전 버튼을 눌러 온수를 켭니다.',
     hotStep2: '목욕이나 샤워 전에 켜 주세요.',
@@ -307,11 +352,17 @@ const S = {
     stop: 'ARRET',
     fan: 'DEBIT D AIR',
     temp: 'TEMP.',
+    auto: 'AUTO',
+    mode: 'MODE',
+    sleep: 'NUIT',
+    operation: 'MARCHE / ARRET',
     acNote: 'Les logements japonais n ont generalement pas de chauffage central. La climatisation assure le froid et le chaud, mais la temperature peut prendre du temps a s ajuster.',
-    mitsubishiTitle: 'Telecommande Mitsubishi',
-    mitsubishiNote: 'Appuyez sur Operation pour demarrer ou arreter. Reglez avec mode, temperature et debit d air.',
-    daikinTitle: 'Telecommande Daikin',
-    daikinNote: 'Choisissez auto, froid, chaud, deshumidification ou ventilation, puis reglez la temperature et le debit d air.',
+    mitsubishiTitle: 'Utiliser la climatisation - Mitsubishi',
+    mitsubishiIntro: 'Utilisez marche/arret pour demarrer ou arreter. Reglez avec mode, temperature et debit d air.',
+    mitsubishiNote: 'Conseil : choisissez d abord le mode, puis reglez la temperature et le debit d air.',
+    daikinTitle: 'Utiliser la climatisation - Daikin',
+    daikinIntro: 'Choisissez auto, froid, chaud, deshumidification ou ventilation, puis reglez la temperature et le debit d air.',
+    daikinNote: 'Conseil : si l ecran est difficile a lire, appuyez d abord sur le mode souhaite, puis ajustez la temperature progressivement.',
     hotWaterTitle: 'Utiliser l eau chaude',
     hotStep1: 'Appuyez sur operation pour activer l eau chaude.',
     hotStep2: 'Allumez avant le bain ou la douche.',
@@ -339,11 +390,17 @@ const S = {
     stop: 'PARAR',
     fan: 'VENTILADOR',
     temp: 'TEMP.',
+    auto: 'AUTO',
+    mode: 'MODO',
+    sleep: 'SUENO',
+    operation: 'ENCENDER / PARAR',
     acNote: 'Las viviendas japonesas normalmente no tienen calefaccion central. El aire acondicionado da frio y calor, pero puede tardar en ajustar la temperatura.',
-    mitsubishiTitle: 'Control Mitsubishi',
-    mitsubishiNote: 'Pulse Operation para iniciar o parar. Ajuste con modo, temperatura y ventilador.',
-    daikinTitle: 'Control Daikin',
-    daikinNote: 'Elija auto, frio, calor, seco o ventilador, luego ajuste temperatura y potencia.',
+    mitsubishiTitle: 'Como usar el aire acondicionado - Mitsubishi',
+    mitsubishiIntro: 'Use encender/parar para iniciar o detener. Ajuste con modo, temperatura y ventilador.',
+    mitsubishiNote: 'Consejo: seleccione primero el modo y luego ajuste temperatura y ventilador.',
+    daikinTitle: 'Como usar el aire acondicionado - Daikin',
+    daikinIntro: 'Elija auto, frio, calor, seco o ventilador, luego ajuste temperatura y potencia.',
+    daikinNote: 'Consejo: si la pantalla es dificil de leer, pulse primero el modo deseado y ajuste la temperatura poco a poco.',
     hotWaterTitle: 'Como usar el agua caliente',
     hotStep1: 'Pulse operacion para encender el agua caliente.',
     hotStep2: 'Enciendalo antes de banarse o ducharse.',

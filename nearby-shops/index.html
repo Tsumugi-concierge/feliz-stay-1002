@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="../assets/style-sub.css">
   <link rel="stylesheet" href="../assets/cute-pack.css">
   <style id="cute-pack-theme">:root{--cp-chip-a:#f0fff4;--cp-chip-b:#e8f8ed;--cp-hover-shadow:rgba(70,140,90,.18);--cp-dot-1:rgba(70,150,90,.10);}</style>
+  <link rel="stylesheet" href="../assets/i18n.css">
   <style>
     :root { --accent:#3a9457; --accent-light:#b2d9be; --cream:#f4fbf5; --text-dark:#2e3d32; --text-mid:#58705e; }
     * { box-sizing:border-box; margin:0; padding:0; }
@@ -39,8 +40,9 @@
   </main>
   <script>
     const S={en:{pageTitle:'Nearby Shops',heading:'Groceries & Convenience Stores',intro:'There are grocery and convenience stores near the house. Scan the QR codes on the guide below for directions. Please check opening hours before you go.',backToMenu:'← Back to Menu'},ja:{pageTitle:'近隣のお店',heading:'食料品店・コンビニエンスストア',intro:'お部屋の近くに食料品店とコンビニがあります。下の案内にあるQRコードから行き方を確認できます。営業時間は事前にご確認ください。',backToMenu:'← メニューへ戻る'},zh:{pageTitle:'附近商店',heading:'食品店和便利店',intro:'房源附近有食品店和便利店。您可以扫描下方指南中的二维码查看路线。出发前请确认营业时间。',backToMenu:'← 返回菜单'},ko:{pageTitle:'주변 상점',heading:'식료품점과 편의점',intro:'숙소 근처에 식료품점과 편의점이 있습니다. 아래 안내의 QR 코드로 길을 확인할 수 있습니다. 방문 전 영업시간을 확인해 주세요.',backToMenu:'← 메뉴로 돌아가기'},fr:{pageTitle:'Commerces a proximite',heading:'Epiceries et commerces de proximite',intro:'Des epiceries et commerces de proximite se trouvent pres du logement. Scannez les codes QR du guide ci-dessous pour obtenir l itineraire. Verifiez les horaires avant de vous y rendre.',backToMenu:'← Retour au menu'},es:{pageTitle:'Tiendas cercanas',heading:'Supermercados y tiendas de conveniencia',intro:'Hay supermercados y tiendas de conveniencia cerca del alojamiento. Escanee los codigos QR de la guia para ver como llegar. Compruebe el horario antes de ir.',backToMenu:'← Volver al menu'}};
-    function setLang(lang,button){document.querySelectorAll('.lang-btn').forEach((item)=>item.classList.remove('active'));button.classList.add('active');document.querySelectorAll('[data-i18n]').forEach((item)=>{item.textContent=S[lang][item.dataset.i18n];});}
+    function setLang(lang,button){document.querySelectorAll('.lang-btn').forEach((item)=>item.classList.remove('active'));if(button)button.classList.add('active');document.querySelectorAll('[data-i18n]').forEach((item)=>{item.textContent=S[lang][item.dataset.i18n];});document.documentElement.lang=lang;try{localStorage.setItem('felizStayLang',lang)}catch(e){} }
   </script>
+  <script src="../assets/i18n.js" defer></script>
   <script src="../assets/cute-pack.js" defer></script>
 </body>
 </html>

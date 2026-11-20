@@ -1,0 +1,20 @@
+/* Shared i18n visibility rules
+   - We rely on documentElement.lang and a body/html class 'lang-<code>' set by i18n.js
+   - Hide known duplicate bilingual snippets so only the selected language is shown. */
+
+/* Hide hardcoded Japanese duplicates; dynamic labels render via data-i18n */
+.pl-ja { display: none !important; }
+.instruction-ja { display: none !important; }
+
+/* Utility (optional): allow authors to mark language-specific blocks
+   Usage example in HTML (if ever needed):
+     <div data-only-lang="ja">...</div>
+   Only shown when html[lang="ja"]. */
+html:not([lang="en"]) [data-only-lang="en"],
+html:not([lang="ja"]) [data-only-lang="ja"],
+html:not([lang="zh"]) [data-only-lang="zh"],
+html:not([lang="ko"]) [data-only-lang="ko"],
+html:not([lang="fr"]) [data-only-lang="fr"],
+html:not([lang="es"]) [data-only-lang="es"] {
+  display: none !important;
+}
